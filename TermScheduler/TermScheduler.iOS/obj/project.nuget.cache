@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "HPvljy2Lo/2EQIJ48tiy531liI90QT5NhL7wPyheq17bS4XcO+NH9fkE8cKV87aVPPQa8hm8FSOWfKF7Q2Yugg==",
+  "success": true,
+  "projectFilePath": "D:\\Visual Studio Projects\\TermScheduler\\TermScheduler\\TermScheduler.iOS\\TermScheduler.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jbraz\\.nuget\\packages\\xam.plugins.notifier\\3.0.1\\xam.plugins.notifier.3.0.1.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.8.0.1451\\xamarin.forms.4.8.0.1451.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermScheduler.AddTermView">
+  <ContentView.Content>
+        <Frame BackgroundColor="#4986AD">
+            <Grid>
+                
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="15*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="15*"/>
+                </Grid.RowDefinitions>
+       
+                        
+                <Label x:Name="termNameLabel"  Grid.ColumnSpan="2" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" FontSize="Large" FontAttributes="Bold" Text="Term Name" />
+                <Label x:Name="startTermLabel" Grid.Column="3" Grid.Row="0" TextColor="White" HorizontalOptions="Start" HorizontalTextAlignment="Center"  FontSize="Small" FontAttributes="Bold" Text="Start Date: 01-21-21" />
+                <Label x:Name="endTermLabel" Grid.Column="4" Grid.Row="0" TextColor="White" HorizontalOptions="End" FontSize="Small" FontAttributes="Bold" Text="End Date: 06-21-23" />
+                <Label x:Name="coursesScheduledLabel" Text="0 / 6 Courses Scheduled" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" TextColor="White"></Label>
+                
+                <Button x:Name="viewTermButton" Clicked="viewTermButton_Clicked" Grid.Column="2" Grid.Row="2" Text="View Term"></Button>
+                <Button x:Name="editButton" Clicked="addCourseButton_Clicked" Grid.Column="3" Grid.Row="2" Text="Add Course"></Button>
+                <Button x:Name="deleteButton" Clicked="deleteTermButton_Clicked" Grid.Column="4" Grid.Row="2" Text="Delete Term"></Button>
+            </Grid>
+        </Frame>
+
+    </ContentView.Content>
+</ContentView>

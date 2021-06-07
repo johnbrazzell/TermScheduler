@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermScheduler.TermCreationPage">
+  
+        <FlexLayout Direction="Column">
+            <Frame FlexLayout.AlignSelf="Stretch" BackgroundColor="#003057" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="titleLabel" HorizontalOptions="Center" TextColor="White" FontSize="Title" HorizontalTextAlignment="Center" Text="Add New Term"></Label>
+            </Frame>
+        <StackLayout>
+            <Entry x:Name="termNameEntry" Margin="20, 20, 20, 0" Placeholder="Enter Term Name" Keyboard="Text"></Entry>
+            <Label  Margin="20, 20, 20, 0" Text="Select Start Date" HorizontalOptions="Start" FontSize="Title"></Label>
+            <DatePicker x:Name="startTermDate" Margin="20, 0, 20, 0"></DatePicker>
+            <Label Margin="20, 20, 20, 0" Text="Select Term End Date" HorizontalOptions="Start" FontSize="Title"></Label>
+            <DatePicker x:Name="endTermDate" Margin="20, 0, 20, 0"></DatePicker>
+            <FlexLayout Margin="20, 20, 20, 0">
+                <Button x:Name="cancelButton" Clicked="cancelButton_Clicked" FlexLayout.Grow="1" Text="Cancel"></Button>
+                <Button x:Name="addTermButton" Clicked="addTermButton_Clicked" FlexLayout.Grow="1" Text="Add Term"></Button>
+            </FlexLayout>
+        </StackLayout>
+                
+        </FlexLayout>
+   
+</ContentPage>

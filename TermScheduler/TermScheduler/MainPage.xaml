@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:c="clr-namespace:TermScheduler"
+             x:Class="TermScheduler.MainPage">
+
+    <ContentPage.Content>
+
+        <Grid>
+        
+                <Frame Grid.Row="0"  x:Name="headerFrame" BackgroundColor="#003057" Padding="24" CornerRadius="0">
+                    <Label Text="Term Scheduler" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+                </Frame>
+            <ScrollView Grid.Row="1">
+        
+            <StackLayout x:Name="termStackLayout">
+
+                <Button x:Name="addTerm" Clicked="addTerm_Clicked"  Text="Add Term"></Button>
+    
+                </StackLayout>
+
+            </ScrollView>
+        <ScrollView Grid.Row="2">
+            <!--view term info here-->
+         
+                    <CarouselView x:Name="courseCarouselView" >
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout >
+                                <Frame HasShadow="True" BorderColor="DarkGray"
+                       CornerRadius="5"
+                       Margin="20"
+                     
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand" >
+                                    <StackLayout>
+                                        <Label TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    
+                                                <Span Text="Course Name: "/>
+                                                <Span Text="{Binding Name}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+
+                                                    <Span Text="Start Date: "/>
+                                                    <Span Text="{Binding StartDate}"/>
+                                                    
+                                                  
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="End Date: "/>
+                                                    <Span Text="{Binding EndDate}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Course Status: "/>
+                                                    <Span Text="{Binding CourseStatus}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Instructor Name: "/>
+                                                    <Span Text="{Binding InstructorName}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Instructor Phone: "/>
+                                                    <Span Text="{Binding InstructorPhoneNumber}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Instructor Email: "/>
+                                                    <Span Text="{Binding InstructorEmail}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label x:Name="paNameLabel">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Performance Assessment: "/>
+                                                    <Span Text="{Binding PerformanceAssessment.Name}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Button x:Name="editPAButton" Text="Edit" Clicked="editPAButton_Clicked"></Button>
+
+
+                                    </StackLayout>
+                                </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                       
+                       
+                    </CarouselView>
+             
+        </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+
+
+
+
+
+
+</ContentPage>

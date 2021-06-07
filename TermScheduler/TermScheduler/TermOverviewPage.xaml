@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermScheduler.TermOverviewPage">
+    <ContentPage.Content>
+      <ScrollView Orientation="Vertical">
+        <StackLayout BackgroundColor="White">
+
+
+            <!-- Course Title and Information -->
+
+                <Frame BackgroundColor="#003057" HeightRequest="40">
+                    <FlexLayout >
+                     <Label x:Name="courseNameLabel" FlexLayout.Grow="1"  Margin="0,0, 20, 0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="Course Name"></Label>
+                     <Button FontSize="Small" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" HorizontalOptions="End" x:Name="editClassButton" Text="Edit"></Button>
+                     <Button FontSize="Small" Margin="10, 0, 0, 0" CornerRadius="20" BorderColor="Black" BorderWidth="1" x:Name="deleteClassButton" Text="Delete" Clicked="deleteClassButton_Clicked"></Button>
+                    </FlexLayout>
+                </Frame>
+          
+           
+            
+            <FlexLayout Margin="10">
+                <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="courseStartLabel" Text="Course Start"></Label>
+                <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="courseEndLabel" Text="Course End"></Label>
+                
+            </FlexLayout>
+            <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="courseStatusLabel" Text="Course Status"></Label>
+            <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorNameLabel" Text="Instructor Name"></Label>
+            <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorPhoneLabel" Text="Instructor Phone"></Label>
+            <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorEmailLabel" Text="Instructor Email"></Label>
+            
+            <!-- Objective Assessment Information -->
+            
+                <Frame BackgroundColor="#003057" HeightRequest="40">
+                <FlexLayout>
+                        <Label FontAttributes="Bold"  FontSize="Medium" FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" Text="Objective Assessment"></Label>
+                        <Button x:Name="editObjectiveAssessmentButton" Clicked="editObjectiveAssessmentButton_Clicked" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Text="Edit"></Button>
+                    
+                </FlexLayout>
+            </Frame>
+            
+
+                    
+                <Label HorizontalOptions= "Start" TextColor="Black" FontSize="Body" x:Name="objectiveAsssessmentNameLabel" Text="Objective Assessment Name"></Label>
+
+                <FlexLayout>
+
+                    <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentDueDateLabel" Text="Due Date"></Label>
+
+                    <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="objectiveAssessmentNotificationsLabel" Text="Notifications"></Label>
+                  
+                </FlexLayout>
+           
+          
+
+            
+            <!--Performance Assessment Information-->
+
+
+                <Frame BackgroundColor="#003057" HeightRequest="40">
+                    <FlexLayout>
+                        <Label FontAttributes="Bold"  FontSize="Medium" FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" Text="Performance Assessment"></Label>
+                        <Button x:Name="editPerformanceAssessmentButton" Clicked="editPerformanceAssessmentButton_Clicked" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Text="Edit"></Button>
+
+                    </FlexLayout>
+                </Frame>
+                <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="performanceAssessmentNameLabel" Text="Performance Assessment Name"></Label>
+            
+            <FlexLayout>
+                <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="performanceAssessmentDueDateLabel" Text="Due Date"></Label>
+                <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotificationsLabel" Text="Notifications"></Label>
+                
+            </FlexLayout>
+            
+            
+            <!--Notes Section-->
+
+            <Frame BackgroundColor="#003057" HeightRequest="40">
+               <FlexLayout>
+
+                        <Label FontAttributes="Bold"  FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" FontSize="Medium" Text="Notes"></Label>
+                        <Button CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Clicked="emailNotesButton_Clicked" x:Name="emailNotesButton" Text="Email Notes"></Button>
+               </FlexLayout>
+                
+            </Frame>
+              
+                    
+
+                 <Editor x:Name="notesEditor" AutoSize="TextChanges"></Editor>
+         
+               
+            
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
