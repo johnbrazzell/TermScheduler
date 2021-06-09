@@ -42,6 +42,11 @@ namespace TermScheduler
             
         }
 
+        public List<Course> GetClassList()
+        {
+            return _courseList;
+        }
+
         public void AddTermToList(AddTermView addTermView)
         {
          
@@ -66,8 +71,8 @@ namespace TermScheduler
             //term
             //courseCarouselView.ItemsSource = 
 
-            List<Course> courseList = termView.GetClassList();
-            
+            //List<Course> courseList = termView.GetClassList();
+            _courseList = termView.GetClassList();
            // List<CourseViewCell> courseDetailList = new List<CourseViewCell>();
             
             //for (int i = 0; i < termView.GetClassList().Count; i++)
@@ -81,7 +86,7 @@ namespace TermScheduler
 
             courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "courseList");
 
-            courseCarouselView.ItemsSource = courseList;
+            courseCarouselView.ItemsSource = _courseList;
 
             //courseCarouselView.ItemTemplate = new DataTemplate(() =>
             //{
@@ -98,17 +103,19 @@ namespace TermScheduler
             //});
         }
 
-        private void editPAButton_Clicked(object sender, EventArgs e)
-        {
-            //courseList.getclass(courseCaourselView.position)
-            int courseIndex = courseCarouselView.Position;
+        //private void editPAButton_Clicked(object sender, EventArgs e)
+        //{
+        //    //courseList.getclass(courseCaourselView.position)
+        //    int courseIndex = courseCarouselView.Position;
 
-            Course course = _courseList[0];
+        //    List<Course> getList = GetClassList();
 
-            course.InstructorName = "Button was clicked";
-            //PerformanceAssessment pa = new PerformanceAssessment("New PA Test", DateTime.Now.ToString(), DateTime.Now.ToString(), false, false);
+        //    Course course = getList[courseIndex];
+
+        //    course.StartDate = "Button was clicked";
+        //    //PerformanceAssessment pa = new PerformanceAssessment("New PA Test", DateTime.Now.ToString(), DateTime.Now.ToString(), false, false);
             
-            //Navigation.PushAsync(new EditPerformanceAssessmentPage(this));
-        }
+        //    //Navigation.PushAsync(new EditPerformanceAssessmentPage(this));
+        //}
     }
 }

@@ -32,7 +32,7 @@ namespace TermScheduler
             obj.ActivateStartNotifications = startCheckBoxNotifications.IsChecked;
             obj.ActivateEndNotifications = endCheckBoxNotifications.IsChecked;
 
-            _course.ObjectiveAssessment = obj;
+           // _course.ObjectiveAssessment = obj;
 
             Navigation.PopAsync();
         }

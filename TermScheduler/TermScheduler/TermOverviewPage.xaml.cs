@@ -43,8 +43,8 @@ namespace TermScheduler
             instructorEmailLabel.Text = "Instructor Email " + _course.InstructorEmail;
 
 
-            if(_course.PerformanceAssessment != null)
-                performanceAssessmentNameLabel.Text = _course.PerformanceAssessment.Name; 
+           // if(_course.PerformanceAssessment != null)
+             //   performanceAssessmentNameLabel.Text = _course.PerformanceAssessment.Name; 
             
             
         }
@@ -52,8 +52,8 @@ namespace TermScheduler
 
         public void UpdatePerformanceAssessment(Course course)
         {
-            performanceAssessmentNameLabel.Text = course.PerformanceAssessment.Name;
-            performanceAssessmentDueDateLabel.Text = course.PerformanceAssessment.StartDate;
+           // performanceAssessmentNameLabel.Text = course.PerformanceAssessment.Name;
+           // performanceAssessmentDueDateLabel.Text = course.PerformanceAssessment.StartDate;
             
         }
 

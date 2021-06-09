@@ -7,6 +7,7 @@
 
         <Grid>
         
+            
                 <Frame Grid.Row="0"  x:Name="headerFrame" BackgroundColor="#003057" Padding="24" CornerRadius="0">
                     <Label Text="Term Scheduler" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
                 </Frame>
@@ -33,16 +34,24 @@
                        HorizontalOptions="FillAndExpand"
                        VerticalOptions="FillAndExpand" >
                                     <StackLayout>
-                                        <Label TextColor="Black">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    
-                                                <Span Text="Course Name: "/>
-                                                <Span Text="{Binding Name}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                 
+                                        <Frame HeightRequest="25" Grid.Row="0" Grid.ColumnSpan="3" BackgroundColor="#003057">
+
+                                            <Label HorizontalOptions="Start" TextColor="White">
+                                                <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding Name}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </Frame>
+                                        <Button x:Name="editCourseButton" Grid.Column="1" Grid.Row="0" Text="Edit" HorizontalOptions="End"/>
+                                        <Button x:Name="deleteCourseButton" Grid.Column="2" Grid.Row="0" Text="Delete" HorizontalOptions="End"/>
+                                            <Label Grid.Row="1" Grid.ColumnSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
 
@@ -53,7 +62,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                            <Label Grid.Row="2" Grid.ColumnSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="End Date: "/>
@@ -61,7 +70,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                            <Label Grid.Row="3" Grid.ColumnSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Course Status: "/>
@@ -69,7 +78,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                            <Label Grid.Row="4" Grid.ColumnSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Instructor Name: "/>
@@ -77,7 +86,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                            <Label Grid.Row="5" Grid.ColumnSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Instructor Phone: "/>
@@ -85,7 +94,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                            <Label Grid.Row="6" Grid.ColumnSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Instructor Email: "/>
@@ -93,18 +102,110 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
+                                            <Frame HeightRequest="25" Grid.Row="7" Grid.ColumnSpan="3" BackgroundColor="#003057">
+                                            
 
-                                        <Label x:Name="paNameLabel">
+                                         </Frame>
+                                        <Label Grid.Row="7" HorizontalOptions="Start" TextColor="White" Text="Performance Assessment"/>
+                                         <Button x:Name="editPerformanceAssessmentButton" Grid.Column="2" Grid.Row="7" HorizontalOptions="End" Text="Edit"/>
+                                        
+                                        <Label Grid.Row="8" Grid.ColumnSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Performance Assessment: "/>
-                                                    <Span Text="{Binding PerformanceAssessment.Name}"/>
+                                                    <Span Text="Name: "/>
+                                                    <Span Text="{Binding PerformanceAssessmentName}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Button x:Name="editPAButton" Text="Edit" Clicked="editPAButton_Clicked"></Button>
+                                            <Label Grid.Row="9" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Start Date: "/>
+                                                        <Span Text="{Binding PerformanceAssessmentStartDate}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Row="10" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="End Date: "/>
+                                                        <Span Text="{Binding PerformanceAssessmentEndDate}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Row="11" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Start Notifications: "/>
+                                                        <Span Text="{Binding PerformanceAssessmentStartNotifications}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Row="12" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="End Notifications: "/>
+                                                        <Span Text="{Binding PerformanceAssessmentEndNotifications}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
 
 
+                                            <Frame Padding="0" HeightRequest="25" MinimumHeightRequest="25" Grid.Row="13" Grid.ColumnSpan="3" BackgroundColor="#003057">
+                                                <Label HorizontalOptions="Start" TextColor="White">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Performance Assessment"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </Frame>
+                                            <Button x:Name="editObjectiveAssessmentButton" Grid.Column="2" Grid.Row="13" HorizontalOptions="End" Text="Edit"/>
+                                            <Label Grid.Row="14" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Name: "/>
+                                                        <Span Text="{Binding ObjectiveAssessmentName}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Row="15" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Start Date: "/>
+                                                        <Span Text="{Binding ObjectiveAssessmentStartDate}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Row="16" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="End Date: "/>
+                                                        <Span Text="{Binding ObjectiveAssessmentEndDate}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Row="17" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Start Notifications: "/>
+                                                        <Span Text="{Binding ObjectiveAssessmentStartNotifications}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Row="18" Grid.ColumnSpan="3">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="End Notifications: "/>
+                                                        <Span Text="{Binding ObjectiveAssessmentEndNotifications}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                       
+
+
+
+                                        </Grid>
                                     </StackLayout>
                                 </Frame>
                                 </StackLayout>

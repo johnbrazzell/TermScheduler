@@ -24,11 +24,11 @@ namespace TermScheduler
             _tv = tv;
             _course = course;
         
-            if(_course.PerformanceAssessment != null)
-            {
-                assessmentName.Text = _course.PerformanceAssessment.Name;
+            //if(_course.PerformanceAssessment != null)
+           // {
+           //     assessmentName.Text = _course.PerformanceAssessment.Name;
 
-            }
+          //  }
           
       
         }
@@ -48,25 +48,25 @@ namespace TermScheduler
             performance.ActivateEndNotifications = endCheckBoxNotifications.IsChecked;
             
 
-            _course.PerformanceAssessment = performance;
+          //  _course.PerformanceAssessment = performance;
 
             MainPage _mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
             List<AddTermView> termList = _mainPage.GetTermList();
 
-            for(int i = 0; i < termList.Count; i++)
-            {
-                if(termList[i].GetTermName() == _tv.GetTermName())
-                {
-                    var classes = termList[i].GetClassList();
-                    for(int j = 0; j < classes.Count; j++)
-                    {
-                        if(classes[j].Name == _course.Name)
-                        {
-                            classes[j].PerformanceAssessment = performance;
-                        }
-                    }
-                }
-            }
+            //for(int i = 0; i < termList.Count; i++)
+            //{
+            //    if(termList[i].GetTermName() == _tv.GetTermName())
+            //    {
+            //        var classes = termList[i].GetClassList();
+            //        for(int j = 0; j < classes.Count; j++)
+            //        {
+            //            if(classes[j].Name == _course.Name)
+            //            {
+            //                classes[j].PerformanceAssessment = performance;
+            //            }
+            //        }
+            //    }
+            //}
 
     
            
