@@ -13,8 +13,16 @@ namespace TermScheduler
     public partial class CourseCarouselPage : CarouselPage
     {
 
+        public CourseCarouselPage()
+        {
+            InitializeComponent();
+        }
+
         //I think i need to pass in the term reference, or find the term
         //public CourseCarouselPage(string termTitle, List<Course> courses)
+
+        //what if i pass in observable list and then each new page i set the binding context to list item
+        //
         public CourseCarouselPage(AddTermView termView)
         {
             InitializeComponent();

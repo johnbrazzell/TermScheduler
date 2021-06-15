@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +20,14 @@ namespace TermScheduler
         /// </summary>
         
         private MainPage _mainPage;
-        private List<Course> _classList = new List<Course>();
+        private List<Course> _classList = new List<Course>(); // change this to observable list
+        private ObservableCollection<Course> _test = new ObservableCollection<Course>();
 
       
         public AddTermView()
         {
             InitializeComponent();
+            BindingContext = this;
         
         }
 
@@ -61,13 +64,17 @@ namespace TermScheduler
 
         public void AddClass(Course newClass)
         {
-            if(_classList.Count < 6)
+            if (_classList.Count < 6)
+            {
                 _classList.Add(newClass);
+                _test.Add(newClass);
+            }
         }
 
         public void RemoveClass(Course classToRemove)
         {
             _classList.Remove(classToRemove);
+            _test.Remove(classToRemove);
         }
 
         public Course GetClass(int course)
@@ -82,7 +89,8 @@ namespace TermScheduler
 
         public void UpdateCourseCounter()
         {
-            coursesScheduledLabel.Text = _classList.Count.ToString() + " / 6 Courses Scheduled";
+            //coursesScheduledLabel.Text = _classList.Count.ToString() + " / 6 Courses Scheduled";
+            //coursesScheduledLabel.Text = _test.Count.ToString() + " / 6 Courses Scheduled";
         }
 
         
@@ -102,9 +110,12 @@ namespace TermScheduler
             //Maybe I should reference the main page here
             //add in the actual termview
            // Navigation.PushAsync(new CourseCarouselPage(this));
+           //Maybe add binding here
+           //create the carouselpage and add binding
+           //then push the page
             _mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
-            _mainPage.AddClassesToCarousel(this);
-          // Navigation.PushAsync(new CourseCarouselPage(this, _classList));
+           _mainPage.AddClassesToCarousel(this);
+           //Navigation.PushAsync(new CourseCarouselPage(this));
         }
 
         private void addCourseButton_Clicked(object sender, EventArgs e)
