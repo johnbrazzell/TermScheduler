@@ -11,16 +11,29 @@ namespace TermScheduler
 {
     public partial class MainPage : ContentPage
     {
-        ObservableCollection<Course> oc = new ObservableCollection<Course>();
+        private ObservableCollection<Term> _termList = new ObservableCollection<Term>();
        
         List<Course> _courseList = new List<Course>();
+        AddTermView _termView;
         public MainPage()
         {
             InitializeComponent();
-            
+            termCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "_termList");
+            termCarouselView.ItemsSource = _termList;
+
+
         }
 
      
+        public void AddTerm(Term term)
+        {
+            _termList.Add(term);
+        }
+
+        public void RemoveTerm(Term term)
+        {
+            _termList.Remove(term);
+        }
 
         private void addTerm_Clicked(object sender, EventArgs e)
         {
@@ -30,34 +43,34 @@ namespace TermScheduler
             
         }
 
-        public List<AddTermView> GetTermList()
-        {
-            List<AddTermView> termList = new List<AddTermView>();
-            for(int i = 0; i < termStackLayout.Children.Count; i++)
-            {
-                termList.Add(termStackLayout.Children[i] as AddTermView);
-            }
-            return termList;
+        //public List<AddTermView> GetTermList()
+        //{
+        //    List<AddTermView> termList = new List<AddTermView>();
+        //    for(int i = 0; i < termStackLayout.Children.Count; i++)
+        //    {
+        //        termList.Add(termStackLayout.Children[i] as AddTermView);
+        //    }
+        //    return termList;
 
             
-        }
+        //}
 
         public List<Course> GetClassList()
         {
             return _courseList;
         }
 
-        public void AddTermToList(AddTermView addTermView)
-        {
+        //public void AddTermToList(AddTermView addTermView)
+        //{
          
-            termStackLayout.Children.Add(addTermView);
-            //termStackLayout.Children.Insert()
-        }
+        //    termStackLayout.Children.Add(addTermView);
+        //    //termStackLayout.Children.Insert()
+        //}
 
-        public void RemoveTermFromList(AddTermView addTermView)
-        {
-            termStackLayout.Children.Remove(addTermView);
-        }
+        //public void RemoveTermFromList(AddTermView addTermView)
+        //{
+        //    termStackLayout.Children.Remove(addTermView);
+        //}
 
         //I need to add inotifyproperty changes to course class
         //I need to add class list and term list as observable collection and create a term class
@@ -73,6 +86,7 @@ namespace TermScheduler
 
             //List<Course> courseList = termView.GetClassList();
             _courseList = termView.GetClassList();
+            _termView = termView;
            // List<CourseViewCell> courseDetailList = new List<CourseViewCell>();
             
             //for (int i = 0; i < termView.GetClassList().Count; i++)
@@ -84,7 +98,7 @@ namespace TermScheduler
 
             //}
 
-            courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "courseList");
+            courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "_courseList");
 
             courseCarouselView.ItemsSource = _courseList;
 
@@ -103,19 +117,21 @@ namespace TermScheduler
             //});
         }
 
-        //private void editPAButton_Clicked(object sender, EventArgs e)
-        //{
-        //    //courseList.getclass(courseCaourselView.position)
-        //    int courseIndex = courseCarouselView.Position;
+        private void editObjectiveAssessmentButton_Clicked(object sender, EventArgs e)
+        {
+           
+            int pos = courseCarouselView.Position;
+            Course course = _termView.GetClass(pos);
+            Navigation.PushAsync(new EditObjectiveAssessmentPage(course));
+        }
 
-        //    List<Course> getList = GetClassList();
+        private void editPerformanceAssessmentButton_Clicked(object sender, EventArgs e)
+        {
+            int pos = courseCarouselView.Position;
+            Course course = _termView.GetClass(pos);
+            Navigation.PushAsync(new EditPerformanceAssessmentPage(course));
+        }
 
-        //    Course course = getList[courseIndex];
-
-        //    course.StartDate = "Button was clicked";
-        //    //PerformanceAssessment pa = new PerformanceAssessment("New PA Test", DateTime.Now.ToString(), DateTime.Now.ToString(), false, false);
-            
-        //    //Navigation.PushAsync(new EditPerformanceAssessmentPage(this));
-        //}
+  
     }
 }

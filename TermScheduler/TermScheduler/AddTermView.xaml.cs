@@ -155,7 +155,7 @@ namespace TermScheduler
             if(answer)
             {
                 _mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
-                _mainPage.RemoveTermFromList(this);
+               // _mainPage.RemoveTermFromList(this);
             }
             else
             {

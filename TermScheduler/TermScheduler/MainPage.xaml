@@ -9,27 +9,35 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="50*" />
 
 
             </Grid.RowDefinitions>
-            
+            <StackLayout>
+                 <Button x:Name="addTerm" Clicked="addTerm_Clicked"  Text="Add Term"></Button>
                 <Frame Grid.Row="0"  x:Name="headerFrame" BackgroundColor="#003057" Padding="24" CornerRadius="0">
                     <Label Text="Term Scheduler" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
                 </Frame>
-            <ScrollView Grid.Row="1">
-        
-            <StackLayout x:Name="termStackLayout">
-
-                <Button x:Name="addTerm" Clicked="addTerm_Clicked"  Text="Add Term"></Button>
+            </StackLayout>
+                <CarouselView x:Name="termCarouselView" Grid.Row="1" EmptyView="No terms to display">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label x:Name="termNameLabel" Text="{Binding TermName}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+                </CarouselView>
+            <!--<StackLayout x:Name="termStackLayout" Orientation="Vertical">
+               
+                    
     
-                </StackLayout>
+                </StackLayout>-->
 
-            </ScrollView>
      <!--   <ScrollView Grid.Row="2" VerticalOptions="Fill" HorizontalOptions="Fill" > -->
             <!--view term info here-->
              
-                    <CarouselView x:Name="courseCarouselView" Grid.Row="2" >
+                    <CarouselView x:Name="courseCarouselView" Grid.Row="2" EmptyView="No courses to display." >
                         <CarouselView.ItemTemplate>
                             <DataTemplate>
                                 <!--
@@ -276,21 +284,15 @@
                                             <Span Text="{Binding InstructorEmail}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
-                                </Label>
+                                </Label> 
 
-
-                        
-
-
-                                
-                                
 
                                 <!-- Objective Assessment Information -->
 
                                 <Frame BackgroundColor="#003057" HeightRequest="40">
                                     <FlexLayout>
                                         <Label FontAttributes="Bold"  FontSize="Medium" FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" Text="Objective Assessment"></Label>
-                                        <Button x:Name="editObjectiveAssessmentButton" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Text="Edit"></Button>
+                                        <Button x:Name="editObjectiveAssessmentButton" Clicked="editObjectiveAssessmentButton_Clicked" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Text="Edit"></Button>
 
                                     </FlexLayout>
                                 </Frame>
@@ -325,15 +327,24 @@
                                 <Frame BackgroundColor="#003057" HeightRequest="40">
                                     <FlexLayout>
                                         <Label FontAttributes="Bold"  FontSize="Medium" FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" Text="Performance Assessment"></Label>
-                                        <Button x:Name="editPerformanceAssessmentButton"  CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Text="Edit"></Button>
+                                        <Button x:Name="editPerformanceAssessmentButton" Clicked="editPerformanceAssessmentButton_Clicked"  CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Text="Edit"></Button>
 
                                     </FlexLayout>
                                 </Frame>
-                                <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="performanceAssessmentNameLabel" Text="Performance Assessment Name"></Label>
+                                <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="performanceAssessmentNameLabel">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Name: "/>
+                                            <Span Text="{Binding PerformanceAssessmentName}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <FlexLayout>
                                     <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="performanceAssessmentDueDateLabel" Text="Due Date"></Label>
-                                    <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotificationsLabel" Text="Notifications"></Label>
+                                    <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="performanceAssessmentDueDate" Text="{Binding PerformanceAssessmentStartDate}"></Label>
+                                    <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotificationsLabel" Text="Notifications: "></Label>
+                                    <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotifications" Text="{Binding PerformanceAssessmentNotifications}"></Label>
 
                                 </FlexLayout>
 
@@ -348,7 +359,7 @@
                                     </FlexLayout>
 
                                 </Frame>
-                                <Editor x:Name="notesEditor" AutoSize="TextChanges" MinimumHeightRequest="40"></Editor>
+                                <Editor x:Name="notesEditor" AutoSize="TextChanges" Text="{Binding CourseNotes}" MinimumHeightRequest="40"></Editor>
 
 
                             </StackLayout>

@@ -25,6 +25,11 @@ namespace TermScheduler
         private void addTermButton_Clicked(object sender, EventArgs e)
         {
 
+            _mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
+
+            Term newTerm = new Term();
+
+
             //check to make sure dates are correct
             if(startTermDate.Date > endTermDate.Date)
             {
@@ -32,29 +37,35 @@ namespace TermScheduler
                 AlertDateOverlap();
                 return;
             }
+            newTerm.TermName = termNameEntry.Text;
+            newTerm.TermStartDate = startTermDate.Date;
+            newTerm.TermEndDate = endTermDate.Date;
+            newTerm.TermStartNotifications = startNofitications.IsChecked;
+            newTerm.TermEndNotifications = endNotifications.IsChecked;
+
+            _mainPage.AddTerm(newTerm);
+            ////Reference the root page
+            //_mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
+            ////_mainPage.term
+            //AddTermView newTerm = new AddTermView();
+
+            //if(String.IsNullOrEmpty(termNameEntry.Text))
+            //{
+            //    newTerm.SetTermName(defaultTermText);
+            //}
+            //else
+            //{
+
+            //    newTerm.SetTermName(termNameEntry.Text);
+            //}
+
             
-            //Reference the root page
-            _mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
-            //_mainPage.term
-            AddTermView newTerm = new AddTermView();
-
-            if(String.IsNullOrEmpty(termNameEntry.Text))
-            {
-                newTerm.SetTermName(defaultTermText);
-            }
-            else
-            {
-
-                newTerm.SetTermName(termNameEntry.Text);
-            }
-
             
-            
-            newTerm.SetStartTermLabel(startTermDate.Date.ToShortDateString());
-            newTerm.SetEndTermLabel(endTermDate.Date.ToShortDateString());
+            //newTerm.SetStartTermLabel(startTermDate.Date.ToShortDateString());
+            //newTerm.SetEndTermLabel(endTermDate.Date.ToShortDateString());
 
 
-            _mainPage.AddTermToList(newTerm);
+           // _mainPage.AddTermToList(newTerm);
 
             Navigation.PopAsync();
         }

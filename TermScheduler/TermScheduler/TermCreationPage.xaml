@@ -13,6 +13,10 @@
             <DatePicker x:Name="startTermDate" Margin="20, 0, 20, 0"></DatePicker>
             <Label Margin="20, 20, 20, 0" Text="Select Term End Date" HorizontalOptions="Start" FontSize="Title"></Label>
             <DatePicker x:Name="endTermDate" Margin="20, 0, 20, 0"></DatePicker>
+            <Label Text="Term Start Notifications"></Label>
+            <CheckBox x:Name="startNofitications"></CheckBox>
+            <Label Text="Term End Notifications"></Label>
+            <CheckBox x:Name="endNotifications"></CheckBox>
             <FlexLayout Margin="20, 20, 20, 0">
                 <Button x:Name="cancelButton" Clicked="cancelButton_Clicked" FlexLayout.Grow="1" Text="Cancel"></Button>
                 <Button x:Name="addTermButton" Clicked="addTermButton_Clicked" FlexLayout.Grow="1" Text="Add Term"></Button>

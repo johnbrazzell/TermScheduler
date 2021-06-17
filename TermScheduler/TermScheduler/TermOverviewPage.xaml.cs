@@ -91,7 +91,7 @@ namespace TermScheduler
         private void editPerformanceAssessmentButton_Clicked(object sender, EventArgs e)
         {
             
-            Navigation.PushAsync(new EditPerformanceAssessmentPage(_termView, _course));
+           // Navigation.PushAsync(new EditPerformanceAssessmentPage(_termView, _course));
         }
 
         private void deleteClassButton_Clicked(object sender, EventArgs e)
