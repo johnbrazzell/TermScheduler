@@ -29,29 +29,29 @@ namespace TermScheduler
 
           
             //Populate carousel with pages based on amount of classes in term
-            for(int i = 0; i < termView.GetClassList().Count; i++)
-            {
-                TermOverviewPage newClassPage = new TermOverviewPage(termView, termView.GetClass(i));
-                this.Children.Add(newClassPage);
-            }
+            //for(int i = 0; i < termView.GetClassList().Count; i++)
+            //{
+            //    TermOverviewPage newClassPage = new TermOverviewPage(termView, termView.GetClass(i));
+            //    this.Children.Add(newClassPage);
+            //}
     
         }
 
         public void ReloadPages(AddTermView termView)
         {
-            
-            for(int i = 0; i < this.Children.Count; i++)
-            {
-                this.Children.RemoveAt(i);
-            }
 
-            for (int i = 0; i < termView.GetClassList().Count; i++)
-            {
-                TermOverviewPage newClassPage = new TermOverviewPage(termView, termView.GetClass(i));
-                this.Children.Add(newClassPage);
-            }
+            //    for(int i = 0; i < this.Children.Count; i++)
+            //    {
+            //        this.Children.RemoveAt(i);
+            //    }
+
+            //    for (int i = 0; i < termView.GetClassList().Count; i++)
+            //    {
+            //        TermOverviewPage newClassPage = new TermOverviewPage(termView, termView.GetClass(i));
+            //        this.Children.Add(newClassPage);
+            //    }
+            //}
         }
-
  
     }
 }

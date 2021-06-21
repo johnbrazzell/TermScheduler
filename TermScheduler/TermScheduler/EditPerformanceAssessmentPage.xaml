@@ -17,7 +17,8 @@
 
                 </Grid.RowDefinitions>
 
-                <Entry TextColor="Black"  x:Name="assessmentName" Grid.Row="0" Grid.ColumnSpan="2" Margin="30" HorizontalTextAlignment="Center" Placeholder="Performance Assessment Name"></Entry>
+                <Entry TextColor="Black"  x:Name="assessmentName" Grid.Row="0" Grid.ColumnSpan="2" Margin="30" HorizontalTextAlignment="Center" Placeholder="Performance Assessment Name"
+                       Text="{Binding PerformanceAssessmentName}"></Entry>
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Start"></Label>
                 <DatePicker x:Name="startDate" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"></DatePicker>
 

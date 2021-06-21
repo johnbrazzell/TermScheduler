@@ -12,9 +12,10 @@ namespace TermScheduler
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCoursePage : ContentPage
     {
-        private AddTermView _term;
-        private List<string> _pickerList; 
-        public AddCoursePage(AddTermView term)
+        private Term _term;
+        private List<string> _pickerList;
+        private MainPage _mainPage;
+        public AddCoursePage(Term term)
         {
             InitializeComponent();
             _pickerList = new List<string>();
@@ -52,9 +53,10 @@ namespace TermScheduler
             course.InstructorName = instructorNameEntry.Text;
             course.InstructorPhoneNumber = instructorPhoneNumberEntry.Text;
             course.InstructorEmail = instructorEmailAddressEntry.Text;
-
-            _term.AddClass(course);
-            _term.UpdateCourseCounter();
+            
+            _mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
+            _term.AddCoursePage(course);
+            //_mainPage.AddClassesToCarousel();
             Navigation.PopAsync();
         }
     }

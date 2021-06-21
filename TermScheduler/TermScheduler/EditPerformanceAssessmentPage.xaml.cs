@@ -14,15 +14,16 @@ namespace TermScheduler
     public partial class EditPerformanceAssessmentPage : ContentPage
     {
         private Course _course = null;
-        
-        public EditPerformanceAssessmentPage(Course course)
+
+   
+        public EditPerformanceAssessmentPage()
         {
             InitializeComponent();
           
             
             Title = "Edit Performance Assessment";
             
-            _course = course;
+           // _course = course;
         
           
           
@@ -37,11 +38,11 @@ namespace TermScheduler
 
             
 
-            _course.PerformanceAssessmentName = assessmentName.Text;
-            _course.PerformanceAssessmentStartDate = startDate.Date.ToShortDateString();
-            _course.PerformanceAssessmentEndDate = endDate.Date.ToShortDateString();
-            _course.PerformanceAssessmentStartNotifications = startCheckBoxNotifications.IsChecked;
-            _course.PerformanceAssessmentEndNotifications = endCheckBoxNotifications.IsChecked;
+            //_course.PerformanceAssessmentName = assessmentName.Text;
+            //_course.PerformanceAssessmentStartDate = startDate.Date.ToShortDateString();
+            //_course.PerformanceAssessmentEndDate = endDate.Date.ToShortDateString();
+            //_course.PerformanceAssessmentStartNotifications = startCheckBoxNotifications.IsChecked;
+            //_course.PerformanceAssessmentEndNotifications = endCheckBoxNotifications.IsChecked;
             
 
         

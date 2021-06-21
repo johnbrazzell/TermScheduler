@@ -114,7 +114,7 @@ namespace TermScheduler
            //create the carouselpage and add binding
            //then push the page
             _mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
-           _mainPage.AddClassesToCarousel(this);
+        //   _mainPage.AddClassesToCarousel(this);
            //Navigation.PushAsync(new CourseCarouselPage(this));
         }
 
@@ -124,7 +124,7 @@ namespace TermScheduler
             //TermCreationPage editTerm = new TermCreationPage();
             //Need to call page with reference to this term
             //That way when the Add Course button is selected you can add the class to the list
-            Navigation.PushAsync(new AddCoursePage(this));
+           // Navigation.PushAsync(new AddCoursePage(this));
 
         }
 

@@ -11,8 +11,8 @@ namespace TermScheduler
         private string _name;
         private bool _startNotifications;
         private bool _endNotifications;
-        private DateTime _startDate;
-        private DateTime _endDate;
+        private string _startDate;
+        private string _endDate;
 
         private ObservableCollection<Course> _courseList = new ObservableCollection<Course>();
         
@@ -49,7 +49,7 @@ namespace TermScheduler
             }
         }
 
-        public DateTime TermStartDate
+        public string TermStartDate
         {
             get => _startDate;
             set
@@ -59,7 +59,7 @@ namespace TermScheduler
             }
         }
 
-        public DateTime TermEndDate
+        public string TermEndDate
         {
             get => _endDate;
             set

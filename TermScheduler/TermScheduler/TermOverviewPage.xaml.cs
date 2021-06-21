@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,39 +16,24 @@ namespace TermScheduler
         Course _course = null;
         AddTermView _termView = null;
 
-        
-        public TermOverviewPage(AddTermView termView, Course course)
+        Term _term = null;
+
+        ObservableCollection<Course> _courseList = new ObservableCollection<Course>();
+        public TermOverviewPage(Term term)
         {
 
             InitializeComponent();
-            _course = course;
+            _term = term;
+            _courseList = term.GetCourseList();
+            BindingContext = _courseList;
+            courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "term.GetCourseList()");
+            courseCarouselView.ItemsSource = term.GetCourseList();
 
-            _termView = termView;
-           
-          
+
 
         }
 
-        protected override void OnAppearing()
-        {
-            
-            courseNameLabel.Text = _course.Name;
-            courseStartLabel.Text = "Start Date " + _course.StartDate;
-            courseEndLabel.Text = "End Date " + _course.EndDate;
-            courseStatusLabel.Text = "Status: " + _course.CourseStatus;
-
-
-
-            instructorNameLabel.Text = "Instructor Name " + _course.InstructorName;
-            instructorPhoneLabel.Text = "Instructor Phone " + _course.InstructorPhoneNumber;
-            instructorEmailLabel.Text = "Instructor Email " + _course.InstructorEmail;
-
-
-           // if(_course.PerformanceAssessment != null)
-             //   performanceAssessmentNameLabel.Text = _course.PerformanceAssessment.Name; 
-            
-            
-        }
+ 
           
 
         public void UpdatePerformanceAssessment(Course course)
@@ -69,7 +55,7 @@ namespace TermScheduler
             string emailToAdd = await DisplayPromptAsync("Email Recipient", "Enter e-mail address", keyboard: Keyboard.Email);
 
             email.Add(emailToAdd);
-            await ComposeEmail.SendEmail("Notes for " + courseNameLabel.Text, notesEditor.Text, email);
+           // await ComposeEmail.SendEmail("Notes for " + courseNameLabel.Text, notesEditor.Text, email);
 
         }
 
@@ -90,23 +76,23 @@ namespace TermScheduler
 
         private void editPerformanceAssessmentButton_Clicked(object sender, EventArgs e)
         {
-            
+            EditPerformanceAssessmentPage page = new EditPerformanceAssessmentPage();
+            page.BindingContext = _courseList[courseCarouselView.Position];
+            Navigation.PushAsync(page);
            // Navigation.PushAsync(new EditPerformanceAssessmentPage(_termView, _course));
         }
 
         private void deleteClassButton_Clicked(object sender, EventArgs e)
         {
-            _termView.RemoveClass(_course);
+            //Course course = _term.ge
+            _term.RemoveCourse(_courseList[courseCarouselView.Position]);
         }
 
-
-        async void TestAlert()
+        private void editClassButton_Clicked(object sender, EventArgs e)
         {
-            //bool answer = await DisplayAlert("Question?", "Would you like to play a game", "Yes", "No");
-            string testName = await DisplayPromptAsync("Edit Objective Assessment", "Enter Name");
-            string testStart = await DisplayPromptAsync("Edit Objective", "Enter Date"); 
-            objectiveAsssessmentNameLabel.Text = testName;
-            objectiveAssessmentDueDateLabel.Text = testStart;
+            //create new page
+            //set binding to this course
+            
         }
     }
 }

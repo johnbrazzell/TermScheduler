@@ -4,132 +4,259 @@
              x:Class="TermScheduler.MainPage">
 
     <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="#003057">
 
-        <Grid>
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 0.5">
+
+                <Label Text="Term Scheduler" TextColor="White" FontSize="Title" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="Start"/>
+
+                <Frame HasShadow="True" BorderColor="DarkGray"
+                       CornerRadius="5"
+                       Margin="20"
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand" >
+
+                        <CarouselView  x:Name="termCarouselView" VerticalOptions="Center" EmptyView="No terms to display">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+
+
+                                        <Label x:Name="termNameLabel" HorizontalOptions="End" FontSize="Header" TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                            
+                                                    <Span Text="{Binding TermName}" FontAttributes="Bold"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    <Label x:Name="termStartLabel"  HorizontalOptions="Start" TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Term Start: " FontAttributes="Bold"/>
+                                                <Span Text="{Binding TermStartDate}"/>
+                                              
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label x:Name="termEndLabel" HorizontalOptions="Start" TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Term End: " FontAttributes="Bold"/>
+                                                <Span Text="{Binding TermEndDate}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label x:Name="termStartNotifications" HorizontalOptions="Start" TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Start Notifcations: " FontAttributes="Bold"/>
+                                                <Span Text="{Binding TermStartNotifications}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label x:Name="termEndNotifications" HorizontalOptions="Start" TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="End Notifications: " FontAttributes="Bold"/>
+                                                <Span Text="{Binding TermEndNotifications}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <FlexLayout>
+
+                                        <Button HorizontalOptions="Start" x:Name="addCourseButton" Text="Add Course" Clicked="addCourseButton_Clicked" ></Button>
+                                        <Button HorizontalOptions="Center" x:Name="viewTermButton" Text="View Term" Clicked="viewTermButton_Clicked" ></Button>
+                                        <Button HorizontalOptions="End" x:Name="deleteTerm" Clicked="deleteTerm_Clicked" Text="Delete Term"></Button>
+                                    </FlexLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                    </Frame>
+         
+
+
+            </StackLayout>
+
+            <Button AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95, .95, 80, 80" 
+                    Text="Add Term" CornerRadius="60" x:Name="addTerm" Clicked="addTerm_Clicked"/>
+        </AbsoluteLayout>
+
+    
+            <!--<Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40*"/>   
                 <RowDefinition Height="50*" />
 
 
             </Grid.RowDefinitions>
-            <StackLayout>
-                 <Button x:Name="addTerm" Clicked="addTerm_Clicked"  Text="Add Term"></Button>
-                <Frame Grid.Row="0"  x:Name="headerFrame" BackgroundColor="#003057" Padding="24" CornerRadius="0">
+            <StackLayout Grid.Row="0">
+                 
+                --><!--<Frame x:Name="headerFrame" BackgroundColor="#003057" Padding="24" CornerRadius="0">
                     <Label Text="Term Scheduler" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-                </Frame>
+                </Frame>--><!--
+           
+            
+                <Button HeightRequest="50" x:Name="addTerm" Clicked="addTerm_Clicked"  Text="Add Term" ></Button>
             </StackLayout>
-                <CarouselView x:Name="termCarouselView" Grid.Row="1" EmptyView="No terms to display">
+
+            <Frame Grid.Row="1" HasShadow="True" BorderColor="DarkGray"
+                       CornerRadius="5"
+                       Margin="20"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+
+                <CarouselView  x:Name="termCarouselView" Grid.Row="1" EmptyView="No terms to display" CurrentItemChanged="termCarouselView_CurrentItemChanged">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
-                            <Label x:Name="termNameLabel" Text="{Binding TermName}"/>
+                            
+                            
+                            <Label x:Name="termStartLabel" HorizontalOptions="Start">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Term: "/>
+                                        <Span Text="{Binding TermName}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label x:Name="termEndLabel" Text="{Binding TermEndDate}" HorizontalOptions="End"/>
+                            <Label x:Name="termStartNotifications" Text="{Binding TermStartNotifications}" HorizontalOptions="End"/>
+                            <Label x:Name="termEndNotifications" Text="{Binding TermEndNotifications}" HorizontalOptions="End"/>
+                            <Button x:Name="addCourseButton" Text="Add Course" Clicked="addCourseButton_Clicked"></Button>
+                            <Button HeightRequest="50" x:Name="deleteTerm" Clicked="deleteTerm_Clicked" Text="Delete Term" ></Button>
                         </StackLayout>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
                 </CarouselView>
-            <!--<StackLayout x:Name="termStackLayout" Orientation="Vertical">
+            </Frame>
+            --><!--<StackLayout x:Name="termStackLayout" Orientation="Vertical">
                
                     
     
                 </StackLayout>-->
 
      <!--   <ScrollView Grid.Row="2" VerticalOptions="Fill" HorizontalOptions="Fill" > -->
-            <!--view term info here-->
-             
-                    <CarouselView x:Name="courseCarouselView" Grid.Row="2" EmptyView="No courses to display." >
-                        <CarouselView.ItemTemplate>
-                            <DataTemplate>
-                                <!--
-                                <ScrollView>
-                                    <StackLayout></StackLayout>
-                                </ScrollView>
-                                -->
-                                <!--
-                                <StackLayout >
-                                <Frame HasShadow="True" BorderColor="DarkGray"
+            <!--view term info here--><!--
+            <Frame HasShadow="True" BorderColor="DarkGray"
                        CornerRadius="5"
                        Margin="20"
-                     
                        HorizontalOptions="FillAndExpand"
-                       VerticalOptions="FillAndExpand" >
-                                    <StackLayout>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                            </Grid.RowDefinitions>
-                                 
-                                        <Frame HeightRequest="25" Grid.Row="0" Grid.ColumnSpan="3" BackgroundColor="#003057">
+                       VerticalOptions="FillAndExpand" Grid.Row="2">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                   <ScrollView VerticalOptions="FillAndExpand" Grid.Row="0">
+                    <CarouselView Grid.Row="0" x:Name="courseCarouselView" EmptyView="No courses to display." VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
 
-                                            <Label HorizontalOptions="Start" TextColor="White">
-                                                <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding Name}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
+
+                                    <StackLayout BackgroundColor="White" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+
+                                        --><!-- Course Title and Information --><!--
+
+                                        <Frame BackgroundColor="#003057" HeightRequest="40">
+                                            <FlexLayout >
+                                                <Label  x:Name="courseNameLabel" FlexLayout.Grow="1"  Margin="0,0, 20, 0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="{Binding Name}"></Label>
+                                                <Button  FontSize="Small" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" HorizontalOptions="End" x:Name="editClassButton" Text="Edit"></Button>
+                                                <Button  FontSize="Small" Margin="10, 0, 0, 0" CornerRadius="20" BorderColor="Black" BorderWidth="1" x:Name="deleteClassButton" Text="Delete"></Button>
+                                            </FlexLayout>
                                         </Frame>
-                                        <Button x:Name="editCourseButton" Grid.Column="1" Grid.Row="0" Text="Edit" HorizontalOptions="End"/>
-                                        <Button x:Name="deleteCourseButton" Grid.Column="2" Grid.Row="0" Text="Delete" HorizontalOptions="End"/>
-                                            <Label Grid.Row="1" Grid.ColumnSpan="3">
-                                            <Label.FormattedText>
-                                                <FormattedString>
 
-                                                    <Span Text="Start Date: "/>
-                                                    <Span Text="{Binding StartDate}"/>
-                                                    
-                                                  
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                            <Label Grid.Row="2" Grid.ColumnSpan="3">
+
+
+                                        <FlexLayout Margin="10">
+                                            <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="courseStartLabel" Text="Course Start: " FontAttributes="Bold"></Label>
+                                            <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="courseStart" Text="{Binding StartDate}"></Label>
+                                            <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="courseEndLabel" Text="Course End" FontAttributes="Bold"></Label>
+                                            <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="courseEnd" Text="{Binding EndDate}"></Label>
+
+                                        </FlexLayout>
+                                        <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="courseStatusLabel" Text="Course Status">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="End Date: "/>
-                                                    <Span Text="{Binding EndDate}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                            <Label Grid.Row="3" Grid.ColumnSpan="3">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Course Status: "/>
+                                                    <Span Text="Course Status: " FontAttributes="Bold"/>
                                                     <Span Text="{Binding CourseStatus}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                            <Label Grid.Row="4" Grid.ColumnSpan="3">
+                                        <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorNameLabel">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Instructor Name: "/>
+                                                    <Span Text="Instructor Name: " FontAttributes="Bold"/>
                                                     <Span Text="{Binding InstructorName}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                            <Label Grid.Row="5" Grid.ColumnSpan="3">
+                                        <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorPhoneLabel">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Instructor Phone: "/>
+                                                    <Span Text="Instructor Phone: " FontAttributes="Bold"/>
                                                     <Span Text="{Binding InstructorPhoneNumber}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                            <Label Grid.Row="6" Grid.ColumnSpan="3">
+                                        <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorEmailLabel" Text="Instructor Email">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Instructor Email: "/>
+                                                    <Span Text="Instructor Email: " FontAttributes="Bold"/>
                                                     <Span Text="{Binding InstructorEmail}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                            <Frame HeightRequest="25" Grid.Row="7" Grid.ColumnSpan="3" BackgroundColor="#003057">
-                                            
 
-                                         </Frame>
-                                        <Label Grid.Row="7" HorizontalOptions="Start" TextColor="White" Text="Performance Assessment"/>
-                                         <Button x:Name="editPerformanceAssessmentButton" Grid.Column="2" Grid.Row="7" HorizontalOptions="End" Text="Edit"/>
-                                        
-                                        <Label Grid.Row="8" Grid.ColumnSpan="3">
+
+                                        --><!-- Objective Assessment Information --><!--
+
+                                        <Frame BackgroundColor="#003057" HeightRequest="40">
+                                            <FlexLayout>
+                                                <Label FontAttributes="Bold"  FontSize="Medium" FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" Text="Objective Assessment"></Label>
+                                                <Button x:Name="editObjectiveAssessmentButton" Clicked="editObjectiveAssessmentButton_Clicked" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Text="Edit"></Button>
+
+                                            </FlexLayout>
+                                        </Frame>
+
+
+
+                                        <Label HorizontalOptions= "Start" TextColor="Black" FontSize="Body" x:Name="objectiveAsssessmentNameLabel" Text="Objective Assessment Name">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Name: " />
+                                                    <Span Text="{Binding ObjectiveAssessmentName}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <FlexLayout>
+
+                                            <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentDueDateLabel" Text="Due Date"></Label>
+                                            <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentDueDate" Text="{Binding ObjectiveAssessmentStartDate}"></Label>
+
+                                            <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="objectiveAssessmentNotificationsLabel" Text="Notifications"></Label>
+                                            <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="objectiveAssessmentNotifications" Text="{Binding ObjectiveAssessmentStartNotifications}"></Label>
+
+                                        </FlexLayout>
+
+
+
+
+                                        --><!--Performance Assessment Information--><!--
+
+
+                                        <Frame BackgroundColor="#003057" HeightRequest="40">
+                                            <FlexLayout>
+                                                <Label FontAttributes="Bold"  FontSize="Medium" FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" Text="Performance Assessment"></Label>
+                                                <Button x:Name="editPerformanceAssessmentButton" Clicked="editPerformanceAssessmentButton_Clicked"  CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Text="Edit"></Button>
+
+                                            </FlexLayout>
+                                        </Frame>
+                                        <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="performanceAssessmentNameLabel">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Name: "/>
@@ -137,241 +264,42 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                            <Label Grid.Row="9" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Start Date: "/>
-                                                        <Span Text="{Binding PerformanceAssessmentStartDate}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Grid.Row="10" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="End Date: "/>
-                                                        <Span Text="{Binding PerformanceAssessmentEndDate}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Grid.Row="11" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Start Notifications: "/>
-                                                        <Span Text="{Binding PerformanceAssessmentStartNotifications}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Grid.Row="12" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="End Notifications: "/>
-                                                        <Span Text="{Binding PerformanceAssessmentEndNotifications}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
+
+                                        <FlexLayout>
+                                            <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="performanceAssessmentDueDateLabel" Text="Due Date"></Label>
+                                            <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="performanceAssessmentDueDate" Text="{Binding PerformanceAssessmentStartDate}"></Label>
+                                            <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotificationsLabel" Text="Notifications: "></Label>
+                                            <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotifications" Text="{Binding PerformanceAssessmentNotifications}"></Label>
+
+                                        </FlexLayout>
 
 
-                                            <Frame Padding="0" HeightRequest="25" MinimumHeightRequest="25" Grid.Row="13" Grid.ColumnSpan="3" BackgroundColor="#003057">
-                                                <Label HorizontalOptions="Start" TextColor="White">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="Performance Assessment"/>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                            </Frame>
-                                            <Button x:Name="editObjectiveAssessmentButton" Grid.Column="2" Grid.Row="13" HorizontalOptions="End" Text="Edit"/>
-                                            <Label Grid.Row="14" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Name: "/>
-                                                        <Span Text="{Binding ObjectiveAssessmentName}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Grid.Row="15" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Start Date: "/>
-                                                        <Span Text="{Binding ObjectiveAssessmentStartDate}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Grid.Row="16" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="End Date: "/>
-                                                        <Span Text="{Binding ObjectiveAssessmentEndDate}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Grid.Row="17" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Start Notifications: "/>
-                                                        <Span Text="{Binding ObjectiveAssessmentStartNotifications}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Grid.Row="18" Grid.ColumnSpan="3">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="End Notifications: "/>
-                                                        <Span Text="{Binding ObjectiveAssessmentEndNotifications}"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                       
+                                        --><!--Notes Section--><!--
+
+                                        <Frame BackgroundColor="#003057" HeightRequest="40">
+                                            <FlexLayout>
+
+                                                <Label FontAttributes="Bold"  FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" FontSize="Medium" Text="Notes"></Label>
+                                                <Button CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  x:Name="emailNotesButton" Text="Email Notes"></Button>
+                                            </FlexLayout>
+
+                                        </Frame>
+                                        <Editor x:Name="notesEditor" AutoSize="TextChanges" Text="{Binding CourseNotes}" MinimumHeightRequest="40"></Editor>
 
 
-
-                                        </Grid>
                                     </StackLayout>
-                                </Frame>
-                                </StackLayout>
-                                -->
-                        <ScrollView>
-                            <StackLayout BackgroundColor="White">
 
-
-                                <!-- Course Title and Information -->
-
-                                <Frame BackgroundColor="#003057" HeightRequest="40">
-                                    <FlexLayout >
-                                        <Label x:Name="courseNameLabel" FlexLayout.Grow="1"  Margin="0,0, 20, 0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="{Binding Name}"></Label>
-                                        <Button FontSize="Small" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" HorizontalOptions="End" x:Name="editClassButton" Text="Edit"></Button>
-                                        <Button FontSize="Small" Margin="10, 0, 0, 0" CornerRadius="20" BorderColor="Black" BorderWidth="1" x:Name="deleteClassButton" Text="Delete"></Button>
-                                    </FlexLayout>
-                                </Frame>
-
-
-
-                                <FlexLayout Margin="10">
-                                    <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="courseStartLabel" Text="Course Start: " FontAttributes="Bold"></Label>
-                                    <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="courseStart" Text="{Binding StartDate}"></Label>
-                                    <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="courseEndLabel" Text="Course End" FontAttributes="Bold"></Label>
-                                    <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="courseEnd" Text="{Binding EndDate}"></Label>
-
-                                </FlexLayout>
-                                <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="courseStatusLabel" Text="Course Status">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Course Status: " FontAttributes="Bold"/>
-                                            <Span Text="{Binding CourseStatus}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorNameLabel">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Instructor Name: " FontAttributes="Bold"/>
-                                            <Span Text="{Binding InstructorName}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorPhoneLabel">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Instructor Phone: " FontAttributes="Bold"/>
-                                            <Span Text="{Binding InstructorPhoneNumber}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="instructorEmailLabel" Text="Instructor Email">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Instructor Email: " FontAttributes="Bold"/>
-                                            <Span Text="{Binding InstructorEmail}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label> 
-
-
-                                <!-- Objective Assessment Information -->
-
-                                <Frame BackgroundColor="#003057" HeightRequest="40">
-                                    <FlexLayout>
-                                        <Label FontAttributes="Bold"  FontSize="Medium" FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" Text="Objective Assessment"></Label>
-                                        <Button x:Name="editObjectiveAssessmentButton" Clicked="editObjectiveAssessmentButton_Clicked" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Text="Edit"></Button>
-
-                                    </FlexLayout>
-                                </Frame>
-
-
-
-                                <Label HorizontalOptions= "Start" TextColor="Black" FontSize="Body" x:Name="objectiveAsssessmentNameLabel" Text="Objective Assessment Name">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Name: " />
-                                            <Span Text="{Binding ObjectiveAssessmentName}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-
-                                <FlexLayout>
-
-                                    <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentDueDateLabel" Text="Due Date"></Label>
-                                    <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentDueDate" Text="{Binding ObjectiveAssessmentStartDate}"></Label>
-
-                                    <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="objectiveAssessmentNotificationsLabel" Text="Notifications"></Label>
-                                    <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="objectiveAssessmentNotifications" Text="{Binding ObjectiveAssessmentStartNotifications}"></Label>
-
-                                </FlexLayout>
-
-
-
-
-                                <!--Performance Assessment Information-->
-
-
-                                <Frame BackgroundColor="#003057" HeightRequest="40">
-                                    <FlexLayout>
-                                        <Label FontAttributes="Bold"  FontSize="Medium" FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" Text="Performance Assessment"></Label>
-                                        <Button x:Name="editPerformanceAssessmentButton" Clicked="editPerformanceAssessmentButton_Clicked"  CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Text="Edit"></Button>
-
-                                    </FlexLayout>
-                                </Frame>
-                                <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="performanceAssessmentNameLabel">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Name: "/>
-                                            <Span Text="{Binding PerformanceAssessmentName}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-
-                                <FlexLayout>
-                                    <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="performanceAssessmentDueDateLabel" Text="Due Date"></Label>
-                                    <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="performanceAssessmentDueDate" Text="{Binding PerformanceAssessmentStartDate}"></Label>
-                                    <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotificationsLabel" Text="Notifications: "></Label>
-                                    <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotifications" Text="{Binding PerformanceAssessmentNotifications}"></Label>
-
-                                </FlexLayout>
-
-
-                                <!--Notes Section-->
-
-                                <Frame BackgroundColor="#003057" HeightRequest="40">
-                                    <FlexLayout>
-
-                                        <Label FontAttributes="Bold"  FlexLayout.Grow="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White" FontSize="Medium" Text="Notes"></Label>
-                                        <Button CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  x:Name="emailNotesButton" Text="Email Notes"></Button>
-                                    </FlexLayout>
-
-                                </Frame>
-                                <Editor x:Name="notesEditor" AutoSize="TextChanges" Text="{Binding CourseNotes}" MinimumHeightRequest="40"></Editor>
-
-
-                            </StackLayout>
-                        </ScrollView>
-                    </DataTemplate>
+                            </DataTemplate>
                         </CarouselView.ItemTemplate>
-                       
-                       
-                    </CarouselView>
 
-            <!--  </ScrollView> -->
-        </Grid>
+
+                    </CarouselView>
+                    </ScrollView>
+                </Grid>
+            </Frame>
+            --><!--  </ScrollView> --><!--
+        </Grid>-->
+  
     </ContentPage.Content>
 
 
