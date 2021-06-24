@@ -38,8 +38,8 @@ namespace TermScheduler
                 return;
             }
             newTerm.TermName = termNameEntry.Text;
-            newTerm.TermStartDate = startTermDate.Date.ToShortDateString();
-            newTerm.TermEndDate = endTermDate.Date.ToShortDateString();
+            newTerm.TermStart = startTermDate.Date;
+            newTerm.TermEnd = endTermDate.Date;
             newTerm.TermStartNotifications = startNofitications.IsChecked;
             newTerm.TermEndNotifications = endNotifications.IsChecked;
 

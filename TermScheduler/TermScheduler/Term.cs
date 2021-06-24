@@ -13,6 +13,8 @@ namespace TermScheduler
         private bool _endNotifications;
         private string _startDate;
         private string _endDate;
+        private DateTime _termStartDate = DateTime.Now;
+        private DateTime _termEndDate = DateTime.Now;
 
         private ObservableCollection<Course> _courseList = new ObservableCollection<Course>();
         
@@ -51,24 +53,46 @@ namespace TermScheduler
 
         public string TermStartDate
         {
-            get => _startDate;
-            set
-            {
-                _startDate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TermStartDate)));
-            }
+            get => _termStartDate.ToShortDateString();
+            //set
+            //{
+            //    _startDate = value;
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TermStartDate)));
+            //}
         }
 
         public string TermEndDate
         {
-            get => _endDate;
+            get => _termEndDate.ToShortDateString();
+            //set
+            //{
+            //    _endDate = value;
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TermEndDate)));
+            //}
+        }
+
+        public DateTime TermStart
+        {
+            get => _termStartDate;
             set
             {
-                _endDate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TermEndDate)));
+                _termStartDate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TermStart)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TermStartDate)));
             }
         }
 
+
+        public DateTime TermEnd
+        {
+            get => _termEndDate;
+            set
+            {
+                _termEndDate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TermEnd)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TermEndDate)));
+            }
+        }
 
 
         public ObservableCollection<Course> GetCourseList()

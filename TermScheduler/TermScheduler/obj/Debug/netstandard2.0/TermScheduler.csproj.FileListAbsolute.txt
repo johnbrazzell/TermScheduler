@@ -21,3 +21,5 @@ D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\ne
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\EditPerformanceAssessmentPage.xaml.g.cs
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\CourseViewCell.xaml.g.cs
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\CourseDetailsPage.xaml.g.cs
+D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\EditCoursePage.xaml.g.cs
+D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\EditTermPage.xaml.g.cs

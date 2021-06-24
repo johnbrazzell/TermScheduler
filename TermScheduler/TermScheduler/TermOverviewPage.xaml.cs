@@ -26,7 +26,7 @@ namespace TermScheduler
             _term = term;
             _courseList = term.GetCourseList();
             BindingContext = _courseList;
-            courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "term.GetCourseList()");
+            //courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "term.GetCourseList()");
             courseCarouselView.ItemsSource = term.GetCourseList();
 
 
@@ -61,16 +61,9 @@ namespace TermScheduler
 
         private void editObjectiveAssessmentButton_Clicked(object sender, EventArgs e)
         {
-            //ObjectiveAssessment objAssessment = new ObjectiveAssessment();
-            _course.Name = "This is the updated name";
-           // Navigation.NavigationStack.
-          //  objAssessment.Name = "New Test";
-            //_course.ObjectiveAssessment = objAssessment;
-            // load information into pop up form
-            // unhide form
-            // on save add text back
-            // on cancel clear form and hide it
-            //objectiveAsssessmentNameLabel.Text = _course.ObjectiveAssessment.Name;
+            EditObjectiveAssessmentPage page = new EditObjectiveAssessmentPage();
+            page.BindingContext = _courseList[courseCarouselView.Position];
+            Navigation.PushAsync(page);
            
         }
 
@@ -92,7 +85,9 @@ namespace TermScheduler
         {
             //create new page
             //set binding to this course
-            
+            EditCoursePage page = new EditCoursePage();
+            page.BindingContext = _courseList[courseCarouselView.Position];
+            Navigation.PushAsync(page);
         }
     }
 }

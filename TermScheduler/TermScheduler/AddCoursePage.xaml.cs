@@ -13,12 +13,11 @@ namespace TermScheduler
     public partial class AddCoursePage : ContentPage
     {
         private Term _term;
-        private List<string> _pickerList;
         private MainPage _mainPage;
         public AddCoursePage(Term term)
         {
             InitializeComponent();
-            _pickerList = new List<string>();
+           
             courseStatus.Items.Add("Not Started");
             courseStatus.Items.Add("In Progress");
             courseStatus.Items.Add("Completed");
@@ -27,14 +26,6 @@ namespace TermScheduler
             courseStatus.SelectedIndex = 0;
 
             _term = term;
-            _pickerList.Add("Enabled");
-            _pickerList.Add("Disabled");
-
-            startTermAlertPicker.ItemsSource = _pickerList;
-            startTermAlertPicker.SelectedIndex = 1; // Set default to disabled
- 
-            endTermAlertPicker.ItemsSource = _pickerList;
-            endTermAlertPicker.SelectedIndex = 1; // Set default to disabled
         }
 
         private void cancelButton_Clicked(object sender, EventArgs e)
@@ -48,8 +39,8 @@ namespace TermScheduler
             course.Name = courseNameEntry.Text;
             course.CourseStatus = courseStatus.SelectedItem.ToString();
 
-            course.StartDate = courseStartDate.Date.ToShortDateString();
-            course.EndDate = courseEndDate.Date.ToShortDateString();
+            course.CourseStartDate = courseStartDate.Date;
+            course.CourseEndDate = courseEndDate.Date;
             course.InstructorName = instructorNameEntry.Text;
             course.InstructorPhoneNumber = instructorPhoneNumberEntry.Text;
             course.InstructorEmail = instructorEmailAddressEntry.Text;

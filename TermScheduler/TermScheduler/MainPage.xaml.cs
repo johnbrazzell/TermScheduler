@@ -121,5 +121,14 @@ namespace TermScheduler
             Term term = _termList[pos];
             Navigation.PushAsync(new TermOverviewPage(term));
         }
+
+        private void editTerm_Clicked(object sender, EventArgs e)
+        {
+            int pos = termCarouselView.Position;
+            Term term = _termList[pos];
+            EditTermPage page = new EditTermPage();
+            page.BindingContext = term;
+            Navigation.PushAsync(page);
+        }
     }
 }

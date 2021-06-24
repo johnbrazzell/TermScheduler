@@ -17,18 +17,18 @@
                     
                 </Grid.RowDefinitions>
                 
-                <Entry TextColor="Black" x:Name="assessmentName" Grid.Row="0" Grid.ColumnSpan="2" Margin="30" HorizontalTextAlignment="Center" Placeholder="Objective Assessment Name"></Entry>
+                <Entry TextColor="Black" Text="{Binding ObjectiveAssessmentName}" x:Name="assessmentName" Grid.Row="0" Grid.ColumnSpan="2" Margin="30" HorizontalTextAlignment="Center" Placeholder="Objective Assessment Name"></Entry>
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Start"></Label>
-                <DatePicker x:Name="startDate" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" ></DatePicker>
+                <DatePicker x:Name="startDate" Date="{Binding ObjectiveStart}" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" ></DatePicker>
 
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1" Text="End"></Label>
-                <DatePicker x:Name="endDate" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"></DatePicker>
+                <DatePicker x:Name="endDate" Date="{Binding ObjectiveEnd}" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"></DatePicker>
 
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="0" Text="Enable Notifications"></Label>
-                <CheckBox VerticalOptions="End" HorizontalOptions="Center" x:Name="startCheckBoxNotifications" Grid.Row="2" Grid.Column="0"></CheckBox>
+                <CheckBox VerticalOptions="End" IsChecked="{Binding ObjectiveAssessmentStartNotifications, Mode=TwoWay}" HorizontalOptions="Center" x:Name="startCheckBoxNotifications" Grid.Row="2" Grid.Column="0"></CheckBox>
 
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" Text="Enable Notifications"></Label>
-                <CheckBox VerticalOptions="End" HorizontalOptions="Center" x:Name="endCheckBoxNotifications" Grid.Row="2" Grid.Column="1"></CheckBox>
+                <CheckBox VerticalOptions="End" IsChecked="{Binding ObjectiveAssessmentEndNotifications, Mode=TwoWay}" HorizontalOptions="Center" x:Name="endCheckBoxNotifications" Grid.Row="2" Grid.Column="1"></CheckBox>
                 
                 <Button Text="Cancel" x:Name="cancelButton" Clicked="cancelButton_Clicked" Grid.Column="0" Grid.Row="3"></Button>
                 <Button Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Grid.Column="1" Grid.Row="3"></Button>

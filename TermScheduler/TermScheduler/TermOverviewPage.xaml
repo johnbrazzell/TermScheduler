@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TermScheduler.TermOverviewPage">
-    <ContentPage.Content>
-      <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
-            <CarouselView  x:Name="courseCarouselView" VerticalOptions="Center" EmptyView="No courses to display">
+  
+    
+            <CarouselView  x:Name="courseCarouselView"  EmptyView="No courses to display">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
+                     <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+                        <StackLayout >
                             <!-- Course Title and Information -->
 
                             <Frame BackgroundColor="#003057" HeightRequest="40">
@@ -72,6 +73,26 @@
                                 </Label.FormattedText>
                             </Label>
 
+
+                            <FlexLayout Margin="10">
+                                <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="courseStartNotifications">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Start Notifications: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding CourseStartNotifications}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="courseEndNotifications">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="End Notifications: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding CourseEndNotifications}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                            </FlexLayout>
                             <!-- Objective Assessment Information -->
 
                             <Frame BackgroundColor="#003057" HeightRequest="40">
@@ -95,7 +116,7 @@
 
                             <FlexLayout>
 
-                                <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentDueDateLabel">
+                                <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentStartDateLabel">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Start Date: " FontAttributes="Bold"/>
@@ -104,11 +125,33 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="objectiveAssessmentNotificationsLabel" Text="Notifications">
+                                <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="objectiveAssessmentEndDateLabel">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="End Date: " FontAttributes="Bold"/>
                                             <Span Text="{Binding ObjectiveAssessmentEndDate}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                            </FlexLayout>
+
+                            <FlexLayout>
+
+                                <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentStartNotificationsLabel">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Start Notifications: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding ObjectiveAssessmentStartNotifications}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="objectiveAssessmentEndNotificationsLabel">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="End Notifications: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding ObjectiveAssessmentEndNotifications}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -128,18 +171,58 @@
 
                                 </FlexLayout>
                             </Frame>
-                            <Label Margin="10" TextColor="Black" FontSize="Body" x:Name="performanceAssessmentNameLabel">
+
+                            <Label HorizontalOptions= "Start" TextColor="Black" FontSize="Body" x:Name="performanceAsssessmentNameLabel">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Name: "/>
+                                        <Span Text="Name: " FontAttributes="Bold"/>
                                         <Span Text="{Binding PerformanceAssessmentName}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
+                          
+
+
                             <FlexLayout>
-                                <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="performanceAssessmentDueDateLabel" Text="Due Date"></Label>
-                                <Label TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAssessmentNotificationsLabel" Text="Notifications"></Label>
+                                <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body" x:Name="performanceAsssessmentStartDateLabel">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Start Date: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding PerformanceAssessmentStartDate}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAsssessmentEndDateLabel">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="End Date: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding PerformanceAssessmentEndDate}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                
+                            </FlexLayout>
+
+                            <FlexLayout>
+                                <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body" x:Name="performanceAsssessmentStartNotificationsLabel">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Start Notifications: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding PerformanceAssessmentStartNotifications}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label HorizontalOptions="End" TextColor="Black" FontSize="Body" FlexLayout.Grow="1" FlexLayout.AlignSelf="End" x:Name="performanceAsssessmentEndNotificationsLabel">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="End Notifications: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding PerformanceAssessmentEndNotifications}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
 
                             </FlexLayout>
 
@@ -162,9 +245,10 @@
 
 
                         </StackLayout>
+                     </ScrollView>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
-        </ScrollView>
-    </ContentPage.Content>
+       
+   
 </ContentPage>

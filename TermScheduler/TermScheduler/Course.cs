@@ -19,10 +19,14 @@ namespace TermScheduler
         private string _name;
         private string _startDate;
         private string _endDate;
+        private DateTime _courseStartDate;
+        private DateTime _courseEndDate;
         private string _courseStatus;
         private string _instructorName;
         private string _instructorPhoneNumber;
         private string _instructorEmail;
+        private string _courseStartNotifications;
+        private string _courseEndNotifications;
 
         private string _objName;
         private string _objStartDate;
@@ -38,7 +42,98 @@ namespace TermScheduler
 
         private string _courseNotes;
 
+        private DateTime _performanceStart = DateTime.Now;
+        private DateTime _performanceEnd = DateTime.Now;
+        private DateTime _objectiveStart = DateTime.Now;
+        private DateTime _objectiveEnd = DateTime.Now;
+
         //implement INotifyPropertyChanged
+
+        public DateTime CourseStartDate
+        {
+            get => _courseStartDate;
+            set
+            {
+                _courseStartDate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CourseStartDate)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(StartDate)));
+
+            }
+        }
+
+        public DateTime CourseEndDate
+        {
+            get => _courseEndDate;
+            set
+            {
+                _courseEndDate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CourseEndDate)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EndDate)));
+            }
+        }
+        public string CourseStartNotifications
+        {
+            get => _courseStartNotifications;
+            set
+            {
+                _courseStartNotifications = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CourseStartNotifications)));
+            }
+        }
+
+        public string CourseEndNotifications
+        {
+            get => _courseEndNotifications;
+            set
+            {
+                _courseEndNotifications = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CourseEndNotifications)));
+            }
+        }
+
+        public DateTime PerformanceStart {
+            get => _performanceStart;
+            set
+            {
+                _performanceStart = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PerformanceStart)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentStartDate)));
+            }
+            }
+
+        public DateTime PerformanceEnd
+        {
+            get => _performanceEnd;
+            set
+            {
+                _performanceEnd = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PerformanceEnd)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentEndDate)));
+            }
+        }
+
+        public DateTime ObjectiveStart
+        {
+            get => _objectiveStart;
+            set
+            {
+                _objectiveStart = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveStart)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentStartDate)));
+            }
+        }
+
+        public DateTime ObjectiveEnd
+        {
+            get => _objectiveEnd;
+            set
+            {
+                _objectiveEnd = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveEnd)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentEndDate)));
+            }
+        }
+
         public string Name { 
             get => _name;
             set {
@@ -47,18 +142,18 @@ namespace TermScheduler
             }
         }
         public string StartDate { 
-            get => _startDate;
-            set { 
-                _startDate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(StartDate)));
-            }
+            get => _courseStartDate.ToShortDateString();
+            //set { 
+            //    _startDate = value;
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(StartDate)));
+            //}
         }
         public string EndDate { 
-            get => _endDate; 
-            set {
-                _endDate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EndDate)));
-            } 
+            get => _courseEndDate.ToShortDateString(); 
+            //set {
+            //    _endDate = value;
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EndDate)));
+            //} 
         }
         public string CourseStatus { 
             get => _courseStatus;
@@ -101,22 +196,27 @@ namespace TermScheduler
 
         public string ObjectiveAssessmentStartDate  
         {
-            get => _objStartDate;
-            set
-            {
-                _objStartDate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentStartDate)));
-            }
+            get => _objectiveStart.ToShortDateString();
+            //get
+            //{
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentStartDate)));
+            //    return _objectiveStart.ToShortDateString();
+            //}
+            //set
+            //{
+            //    _objStartDate = value;
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentStartDate)));
+            //}
         }
 
         public string ObjectiveAssessmentEndDate
         {
-            get => _objEndDate;
-            set
-            {
-                _objEndDate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentEndDate)));
-            }
+            get => _objectiveEnd.ToShortDateString();
+            //set
+            //{
+            //    _objEndDate = value;
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ObjectiveAssessmentEndDate)));
+            //}
         }
 
         public bool ObjectiveAssessmentStartNotifications
@@ -151,22 +251,22 @@ namespace TermScheduler
 
         public string PerformanceAssessmentStartDate
         {
-            get => _perfStartDate;
-            set
-            {
-                _perfStartDate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PerformanceAssessmentStartDate)));
-            }
+            get => _performanceStart.ToShortDateString();
+            //set
+            //{
+            //    _perfStartDate = value;
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PerformanceAssessmentStartDate)));
+            //}
         }
 
         public string PerformanceAssessmentEndDate
         {
-            get => _perfEndDate;
-            set
-            {
-                _perfEndDate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PerformanceAssessmentEndDate)));
-            }
+            get => _performanceStart.ToShortDateString();
+            //set
+            //{
+            //    _perfEndDate = value;
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PerformanceAssessmentEndDate)));
+            //}
         }
 
         public bool PerformanceAssessmentStartNotifications

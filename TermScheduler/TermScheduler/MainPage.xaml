@@ -16,7 +16,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="CenterAndExpand" >
 
-                        <CarouselView  x:Name="termCarouselView" VerticalOptions="Center" EmptyView="No terms to display">
+                        <CarouselView  x:Name="termCarouselView" VerticalOptions="Center" IndicatorView="indicatorView" EmptyView="No terms to display">
                             <CarouselView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout>
@@ -66,18 +66,25 @@
                                     </Label>
                                     <FlexLayout>
 
-                                        <Button HorizontalOptions="Start" x:Name="addCourseButton" Text="Add Course" Clicked="addCourseButton_Clicked" ></Button>
-                                        <Button HorizontalOptions="Center" x:Name="viewTermButton" Text="View Term" Clicked="viewTermButton_Clicked" ></Button>
-                                        <Button HorizontalOptions="End" x:Name="deleteTerm" Clicked="deleteTerm_Clicked" Text="Delete Term"></Button>
+                                        <Button HorizontalOptions="Start" x:Name="addCourseButton" Text="Add" Clicked="addCourseButton_Clicked" ></Button>
+                                        <Button HorizontalOptions="Center" x:Name="viewTermButton" Text="View" Clicked="viewTermButton_Clicked" ></Button>
+                                        <Button HorizontalOptions="End" x:Name="editTerm" Clicked="editTerm_Clicked" Text="Edit"></Button>
+                                        <Button HorizontalOptions="End" x:Name="deleteTerm" Clicked="deleteTerm_Clicked" Text="Delete"></Button>
                                     </FlexLayout>
                                     </StackLayout>
                                 </DataTemplate>
                             </CarouselView.ItemTemplate>
                         </CarouselView>
                     </Frame>
-         
 
 
+            </StackLayout>
+            <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5, .8">
+                
+                            <IndicatorView  x:Name="indicatorView"
+                               IndicatorColor="LightGray"
+                               SelectedIndicatorColor="DarkGray"
+                               HorizontalOptions="Center" />
             </StackLayout>
 
             <Button AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95, .95, 80, 80" 

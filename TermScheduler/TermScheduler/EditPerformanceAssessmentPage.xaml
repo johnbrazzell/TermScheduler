@@ -20,16 +20,16 @@
                 <Entry TextColor="Black"  x:Name="assessmentName" Grid.Row="0" Grid.ColumnSpan="2" Margin="30" HorizontalTextAlignment="Center" Placeholder="Performance Assessment Name"
                        Text="{Binding PerformanceAssessmentName}"></Entry>
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Start"></Label>
-                <DatePicker x:Name="startDate" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"></DatePicker>
+                <DatePicker x:Name="startDate" Date="{Binding PerformanceStart}"  VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"></DatePicker>
 
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1" Text="End"></Label>
-                <DatePicker x:Name="endDate" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"></DatePicker>
+                <DatePicker x:Name="endDate" Date="{Binding PerformanceEnd}" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"></DatePicker>
 
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="0" Text="Enable Notifications"></Label>
-                <CheckBox VerticalOptions="End" HorizontalOptions="Center" x:Name="startCheckBoxNotifications" Grid.Row="2" Grid.Column="0"></CheckBox>
+                <CheckBox VerticalOptions="End" IsChecked="{Binding PerformanceAssessmentStartNotifications, Mode=TwoWay}" HorizontalOptions="Center" x:Name="startCheckBoxNotifications" Grid.Row="2" Grid.Column="0"></CheckBox>
 
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" Text="Enable Notifications"></Label>
-                <CheckBox VerticalOptions="End" HorizontalOptions="Center" x:Name="endCheckBoxNotifications" Grid.Row="2" Grid.Column="1"></CheckBox>
+                <CheckBox VerticalOptions="End" IsChecked="{Binding PerformanceAssessmentEndNotifications, Mode=TwoWay}" HorizontalOptions="Center" x:Name="endCheckBoxNotifications" Grid.Row="2" Grid.Column="1"></CheckBox>
 
                 <Button x:Name="saveButton" Clicked="saveButton_Clicked" Text="Cancel" Grid.Column="0" Grid.Row="3"></Button>
                 <Button x:Name="cancelButton" Clicked="cancelButton_Clicked" Text="Save" Grid.Column="1" Grid.Row="3"></Button>
