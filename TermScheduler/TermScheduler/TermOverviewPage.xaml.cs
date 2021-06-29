@@ -80,6 +80,8 @@ namespace TermScheduler
         private void deleteClassButton_Clicked(object sender, EventArgs e)
         {
             //Course course = _term.ge
+            Course course = _courseList[courseCarouselView.Position];
+            RemoveCourse(course);
             _term.RemoveCourse(_courseList[courseCarouselView.Position]);
         }
 
@@ -90,6 +92,11 @@ namespace TermScheduler
             EditCoursePage page = new EditCoursePage();
             page.BindingContext = _courseList[courseCarouselView.Position];
             Navigation.PushAsync(page);
+        }
+
+        private async void RemoveCourse(Course course)
+        {
+            await DBService.DeleteCourse(course.Id);
         }
     }
 }
