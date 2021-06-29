@@ -44,30 +44,15 @@ namespace TermScheduler
             newTerm.TermEndNotifications = endNotifications.IsChecked;
 
             _mainPage.AddTerm(newTerm);
-            ////Reference the root page
-            //_mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
-            ////_mainPage.term
-            //AddTermView newTerm = new AddTermView();
-
-            //if(String.IsNullOrEmpty(termNameEntry.Text))
-            //{
-            //    newTerm.SetTermName(defaultTermText);
-            //}
-            //else
-            //{
-
-            //    newTerm.SetTermName(termNameEntry.Text);
-            //}
-
-            
-            
-            //newTerm.SetStartTermLabel(startTermDate.Date.ToShortDateString());
-            //newTerm.SetEndTermLabel(endTermDate.Date.ToShortDateString());
-
-
-           // _mainPage.AddTermToList(newTerm);
+            AddTermToDB(newTerm);
+            //Add call to DB to add term
 
             Navigation.PopAsync();
+        }
+
+        private async void AddTermToDB(Term term)
+        {
+            await DBService.AddTerm(term.TermName, term.TermStart, term.TermEnd, term.TermStartNotifications, term.TermEndNotifications);
         }
 
         private void cancelButton_Clicked(object sender, EventArgs e)

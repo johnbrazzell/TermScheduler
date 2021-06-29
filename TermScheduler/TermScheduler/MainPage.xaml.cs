@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Plugin.LocalNotifications;
 using Xamarin.Forms;
+
 
 namespace TermScheduler
 {
@@ -14,26 +16,93 @@ namespace TermScheduler
         private ObservableCollection<Term> _termList = new ObservableCollection<Term>();
        
         private ObservableCollection<Course> _courseList = new ObservableCollection<Course>();
-        
+
+    
         public MainPage()
         {
             InitializeComponent();
-           
+       
+            LoadTermsAndClasses();
+
             termCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "_termList");
             termCarouselView.ItemsSource = _termList;
+          
+             
+
+      
+        }
+        
+  
+        private async void LoadTermsAndClasses()
+        {
+            List<Term> terms = (List<Term>)await DBService.GetTerms();
+            List<Course> courses = (List<Course>)await DBService.GetClasses();
+            AlertTermCount(terms);
+            AlertClassCount(courses);
+            for (int i = 0; i < terms.Count; i++)
+            {
+                _termList.Add(terms[i]);
+                
+               
+                for(int j = 0; j < courses.Count; j++)
+                {
+                    if(courses[j].TermID == terms[i].Id)
+                    {
+                        terms[i].AddCoursePage(courses[j]);
+                    }
+                }
+       
+
+               
+            }
+
+           
+        }
+
+        private async void AlertClassCount(List<Course> list)
+        {
+            string count = list.Count.ToString();
+            await DisplayAlert("Course Count", "DB Class Count is " + count, "OK") ;
 
 
         }
 
-     
+        private async void AlertTermCount(List<Term> list)
+        {
+            string count = list.Count.ToString();
+            await DisplayAlert("Course Count", "DB Term Count is " + count, "OK");
+
+
+        }
+
+        private async void RemoveTermsAndClasses(Term term)
+        {
+            ObservableCollection<Course> courses = term.GetCourseList();
+            if (courses.Count > 0)
+            {
+                for (int i = 0; i < courses.Count; i++)
+                {
+                    if(courses[i].TermID == term.Id)
+                        await DBService.DeleteCourse(courses[i].Id);
+                }
+            }
+            await DBService.DeleteTerm(term.Id);
+
+        }
+            
         public void AddTerm(Term term)
         {
             _termList.Add(term);
         }
 
+        public ObservableCollection<Term> GetTermList()
+        {
+            return _termList;
+        }
         public void RemoveTerm(Term term)
         {
             _termList.Remove(term);
+          
         }
 
         private void addTerm_Clicked(object sender, EventArgs e)
@@ -45,64 +114,28 @@ namespace TermScheduler
         }
 
       
-        public void AddClassesToCarousel()
-        {
-            //for each class in term create a new CourseDetailView
-            //add each course detail view to list
-            //set itemsource of carousel to newly created list
-            //term
-            //courseCarouselView.ItemsSource = 
+        //public void AddClassesToCarousel()
+        //{
+            
 
-          
-
-            //for (int i = 0; i < termView.GetClassList().Count; i++)
-            //{
-            //    //TermOverviewPage newClassPage = new TermOverviewPage(termView, termView.GetClass(i));
-            //    //this.Children.Add(newClassPage);
-            //    CourseViewCell newCourseDetailView = new CourseViewCell();
-            //    courseDetailList.Add(newCourseDetailView);
-
-            //}
-
-            //int pos = termCarouselView.Position;
-
-            //courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "_courseList");
-
-            //courseCarouselView.ItemsSource = _courseList;
-
-
-            int pos = termCarouselView.Position;
-            Term term = _termList[pos];
-            _courseList = term.GetCourseList();
-
-            //ObservableCollection<Course> courseList = term.GetCourseList();
-            //courseList = term.GetCourseList();
-
-           //courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "_courseList");
-           //courseCarouselView.ItemsSource = _courseList;
-
-            //courseCarouselView.ItemTemplate = new DataTemplate(() =>
-            //{
-            //    Label courseNameLabel = new Label { };
-            //    courseNameLabel.SetBinding(Label.TextProperty, "Name");
-            //    Label courseStartLabel = new Label { };
-            //    courseStartLabel.SetBinding(Label.TextProperty, "StartDate");
-
-            //    StackLayout stackLayout = new StackLayout
-            //    {
-            //        Children = { courseNameLabel, courseStartLabel }
-            //    };
-            //    return stackLayout;
-            //});
-        }
+        //    int pos = termCarouselView.Position;
+        //    Term term = _termList[pos];
+        //    _courseList = term.GetCourseList();
+       
+        //}
 
    
 
         private void deleteTerm_Clicked(object sender, EventArgs e)
         {
             int pos = termCarouselView.Position;
+            Term term = _termList[pos];
+
             if (_termList.Count > 0)
+            {
                 _termList.RemoveAt(pos);
+                RemoveTermsAndClasses(term);
+            }
             else
                 return;
         }

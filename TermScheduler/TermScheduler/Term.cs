@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using SQLite;
 
 namespace TermScheduler
 {
@@ -11,8 +12,8 @@ namespace TermScheduler
         private string _name;
         private bool _startNotifications;
         private bool _endNotifications;
-        private string _startDate;
-        private string _endDate;
+        //private string _startDate;
+        //private string _endDate;
         private DateTime _termStartDate = DateTime.Now;
         private DateTime _termEndDate = DateTime.Now;
 
@@ -20,6 +21,8 @@ namespace TermScheduler
         
         public event PropertyChangedEventHandler PropertyChanged;
 
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string TermName
         {
             get => _name;
@@ -100,6 +103,7 @@ namespace TermScheduler
             return _courseList;
         }
 
+        //associate by term name
         public void AddCoursePage(Course course)
         {
             if (_courseList.Count < 6)

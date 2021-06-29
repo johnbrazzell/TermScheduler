@@ -1,9 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "AIHWXP+M/TTZkouF+wkK6LdkGUz0G5swJzgCMxiQzg9BLX1XjBULzy8f4zmUMKItdAnQuWb+spNO3gq3h+fGCA==",
+  "dgSpecHash": "PWwbBfYV3iPoG9+rM4/v3s0xvOaoQ0CaAfhjKXvsEKwqvvOQv1DtYkcXeQ9hqbNnf1cUg5hFqKWCixg27v9jWg==",
   "success": true,
   "projectFilePath": "D:\\Visual Studio Projects\\TermScheduler\\TermScheduler\\TermScheduler.Android\\TermScheduler.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\jbraz\\.nuget\\packages\\sqlite-net-pcl\\1.7.335\\sqlite-net-pcl.1.7.335.nupkg.sha512",
+    "C:\\Users\\jbraz\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.3\\sqlitepclraw.bundle_green.2.0.3.nupkg.sha512",
+    "C:\\Users\\jbraz\\.nuget\\packages\\sqlitepclraw.core\\2.0.3\\sqlitepclraw.core.2.0.3.nupkg.sha512",
+    "C:\\Users\\jbraz\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.android\\2.0.3\\sqlitepclraw.lib.e_sqlite3.android.2.0.3.nupkg.sha512",
+    "C:\\Users\\jbraz\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.3\\sqlitepclraw.provider.e_sqlite3.2.0.3.nupkg.sha512",
+    "C:\\Users\\jbraz\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\jbraz\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\jbraz\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
     "C:\\Users\\jbraz\\.nuget\\packages\\xam.plugins.notifier\\3.0.1\\xam.plugins.notifier.3.0.1.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.common\\1.1.1.3\\xamarin.android.arch.core.common.1.1.1.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.runtime\\1.1.1.3\\xamarin.android.arch.core.runtime.1.1.1.3.nupkg.sha512",

@@ -15,6 +15,7 @@ namespace TermScheduler
         public EditTermPage()
         {
             InitializeComponent();
+            
         }
 
         private void saveButton_Clicked(object sender, EventArgs e)

@@ -25,6 +25,8 @@ namespace TermScheduler
             InitializeComponent();
             _term = term;
             _courseList = term.GetCourseList();
+          //  _courseList = await DBService.GetClasses();
+
             BindingContext = _courseList;
             //courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "term.GetCourseList()");
             courseCarouselView.ItemsSource = term.GetCourseList();
@@ -33,7 +35,7 @@ namespace TermScheduler
 
         }
 
- 
+        
           
 
         public void UpdatePerformanceAssessment(Course course)

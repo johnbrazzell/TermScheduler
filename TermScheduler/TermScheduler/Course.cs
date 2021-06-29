@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using SQLite;
 
 namespace TermScheduler
 {
@@ -25,8 +26,8 @@ namespace TermScheduler
         private string _instructorName;
         private string _instructorPhoneNumber;
         private string _instructorEmail;
-        private string _courseStartNotifications;
-        private string _courseEndNotifications;
+        private bool _courseStartNotifications;
+        private bool _courseEndNotifications;
 
         private string _objName;
         private string _objStartDate;
@@ -48,6 +49,10 @@ namespace TermScheduler
         private DateTime _objectiveEnd = DateTime.Now;
 
         //implement INotifyPropertyChanged
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        public int TermID { get; set; }
 
         public DateTime CourseStartDate
         {
@@ -71,7 +76,7 @@ namespace TermScheduler
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EndDate)));
             }
         }
-        public string CourseStartNotifications
+        public bool CourseStartNotifications
         {
             get => _courseStartNotifications;
             set
@@ -81,7 +86,7 @@ namespace TermScheduler
             }
         }
 
-        public string CourseEndNotifications
+        public bool CourseEndNotifications
         {
             get => _courseEndNotifications;
             set

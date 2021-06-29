@@ -33,6 +33,12 @@ namespace TermScheduler
             Navigation.PopAsync();
         }
 
+        private async void AddCourse(Course course)
+        {
+            await DBService.AddCourse(course.Name, course.TermID, course.CourseStartDate, course.CourseEndDate, course.CourseStatus, course.InstructorName, course.InstructorPhoneNumber,
+                                       course.InstructorEmail, course.CourseStartNotifications, course.CourseEndNotifications, "", DateTime.Now,
+                                       DateTime.Now, false, false, "", DateTime.Now, DateTime.Now, false, false, "");
+        }
         private void addCourseButton_Clicked(object sender, EventArgs e)
         {
             Course course = new Course();
@@ -44,11 +50,18 @@ namespace TermScheduler
             course.InstructorName = instructorNameEntry.Text;
             course.InstructorPhoneNumber = instructorPhoneNumberEntry.Text;
             course.InstructorEmail = instructorEmailAddressEntry.Text;
+            course.TermID = _term.Id;
             
-            _mainPage = App.Current.MainPage.Navigation.NavigationStack.First() as MainPage;
             _term.AddCoursePage(course);
+            AddCourse(course);
+            
+            
+
+            //Call DB add course
             //_mainPage.AddClassesToCarousel();
             Navigation.PopAsync();
         }
+
+    
     }
 }
