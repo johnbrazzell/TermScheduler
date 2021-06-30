@@ -23,6 +23,7 @@ namespace TermScheduler
         {
             PushNotifications.CheckTermNotifications();
             PushNotifications.CheckCourseNotifications();
+            PushNotifications.CheckAssessmentNotifications();
 
         }
 
@@ -30,12 +31,14 @@ namespace TermScheduler
         {
             PushNotifications.CheckTermNotifications();
             PushNotifications.CheckCourseNotifications();
+            PushNotifications.CheckAssessmentNotifications();
         }
 
         protected override void OnResume()
         {
             PushNotifications.CheckTermNotifications();
             PushNotifications.CheckCourseNotifications();
+            PushNotifications.CheckAssessmentNotifications();
         }
     }
 }

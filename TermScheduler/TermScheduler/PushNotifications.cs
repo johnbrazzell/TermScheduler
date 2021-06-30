@@ -48,6 +48,32 @@ namespace TermScheduler
                 }
             }
         }
+
+        public static async void CheckAssessmentNotifications()
+        {
+            List<Course> courses = (List<Course>)await DBService.GetClasses();
+
+            for(int k = 0; k < courses.Count; k++)
+            {
+                if(courses[k].ObjectiveAssessmentStartNotifications == true && courses[k].ObjectiveStart == DateTime.Today)
+                {
+                    CrossLocalNotifications.Current.Show("Objective Assessment Starting", courses[k].ObjectiveAssessmentName + " starts today!");
+                }
+                if (courses[k].ObjectiveAssessmentEndNotifications == true && courses[k].ObjectiveEnd == DateTime.Today)
+                {
+                    CrossLocalNotifications.Current.Show("Objective Assessment Starting", courses[k].ObjectiveAssessmentName + " due today!");
+                }
+
+                if (courses[k].PerformanceAssessmentStartNotifications == true && courses[k].PerformanceStart == DateTime.Today)
+                {
+                    CrossLocalNotifications.Current.Show("Objective Assessment Starting", courses[k].PerformanceAssessmentName + " starts today!");
+                }
+                if (courses[k].PerformanceAssessmentEndNotifications == true && courses[k].PerformanceEnd == DateTime.Today)
+                {
+                    CrossLocalNotifications.Current.Show("Objective Assessment Starting", courses[k].PerformanceAssessmentName + " due today!");
+                }
+            }
+        }
         
     }
 }
