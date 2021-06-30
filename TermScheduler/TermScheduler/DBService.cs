@@ -118,6 +118,18 @@ namespace TermScheduler
         }
 
 
+        public static async Task UpdateGeneralCourseInformation(Course course)
+        {
+            await Init();
+            await db.UpdateAsync(course);
+        }
+
+        public static async Task UpdateTerm(Term term)
+        {
+            await Init();
+            //var termToUpdate = db.QueryAsync<Course>($"SELECT * FROM Course WHERE Id='{term.Id}'");
+            await db.UpdateAsync(term);
+        }
 
     }
 }

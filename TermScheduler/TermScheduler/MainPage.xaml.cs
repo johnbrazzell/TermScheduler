@@ -159,7 +159,7 @@ namespace TermScheduler
         {
             int pos = termCarouselView.Position;
             Term term = _termList[pos];
-            EditTermPage page = new EditTermPage();
+            EditTermPage page = new EditTermPage(term);
             page.BindingContext = term;
             Navigation.PushAsync(page);
         }
