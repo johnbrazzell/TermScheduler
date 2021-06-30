@@ -63,6 +63,16 @@ namespace TermScheduler
 
         private void saveButton_Clicked(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(courseNameEntry.Text))
+            {
+                AlertNameBlank();
+                return;
+            }
+            if (courseStartDate.Date > courseEndDate.Date)
+            {
+                AlertDateOverlap();
+                return;
+            }
             _isSaveButtonPressed = true;
             UpdateCourse(_course);
             Navigation.PopAsync();
@@ -93,6 +103,22 @@ namespace TermScheduler
             {
                 RevertChanges();
             }
+
+        }
+
+        private async void AlertDateOverlap()
+        {
+
+            await DisplayAlert("Alert", "Course Start Date cannot be greater than Course End Date", "OK");
+
+
+        }
+
+        private async void AlertNameBlank()
+        {
+
+            await DisplayAlert("Alert", "Course name cannot be blank", "OK");
+
 
         }
     }

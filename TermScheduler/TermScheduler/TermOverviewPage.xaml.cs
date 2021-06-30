@@ -14,7 +14,7 @@ namespace TermScheduler
     public partial class TermOverviewPage : ContentPage
     {
         Course _course = null;
-        AddTermView _termView = null;
+        
 
         Term _term = null;
 
@@ -79,10 +79,8 @@ namespace TermScheduler
 
         private void deleteClassButton_Clicked(object sender, EventArgs e)
         {
-            //Course course = _term.ge
-            Course course = _courseList[courseCarouselView.Position];
-            RemoveCourse(course);
-            _term.RemoveCourse(_courseList[courseCarouselView.Position]);
+
+            ConfirmDeleteAlert();
         }
 
         private void editClassButton_Clicked(object sender, EventArgs e)
@@ -109,6 +107,26 @@ namespace TermScheduler
         {
             Course course = _courseList[courseCarouselView.Position];
             UpdateCourse(course);
+        }
+
+        private async void ConfirmDeleteAlert()
+        {
+      
+            Course course = _courseList[courseCarouselView.Position];
+            bool answer = await DisplayAlert("Alert", "Are you sure you want delete " + course.Name + "?", "Yes", "No");
+
+            if (answer)
+            {
+
+                RemoveCourse(course);
+                _term.RemoveCourse(_courseList[courseCarouselView.Position]);
+               
+
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

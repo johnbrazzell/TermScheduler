@@ -87,12 +87,7 @@ namespace TermScheduler
             return _classList;
         }
 
-        public void UpdateCourseCounter()
-        {
-            //coursesScheduledLabel.Text = _classList.Count.ToString() + " / 6 Courses Scheduled";
-            //coursesScheduledLabel.Text = _test.Count.ToString() + " / 6 Courses Scheduled";
-        }
-
+     
         
        
 

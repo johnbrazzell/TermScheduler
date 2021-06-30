@@ -58,6 +58,17 @@ namespace TermScheduler
         private void saveButton_Clicked(object sender, EventArgs e)
         {
 
+            if (String.IsNullOrEmpty(assessmentName.Text))
+            {
+                AlertNameBlank();
+                return;
+            }
+            if (startDate.Date > endDate.Date)
+            {
+                AlertDateOverlap();
+                return;
+            }
+
 
             _isSaveButtonPressed = true;
             UpdateObjectiveAssessment();
@@ -84,5 +95,23 @@ namespace TermScheduler
             }
 
         }
+
+        private async void AlertDateOverlap()
+        {
+
+            await DisplayAlert("Alert", "Assessment Start Date cannot be greater than Assessment End Date", "OK");
+
+
+        }
+
+        private async void AlertNameBlank()
+        {
+
+            await DisplayAlert("Alert", "Assessment name cannot be blank", "OK");
+
+
+        }
+
+
     }
 }

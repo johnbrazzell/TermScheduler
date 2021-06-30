@@ -41,6 +41,20 @@ namespace TermScheduler
         }
         private void addCourseButton_Clicked(object sender, EventArgs e)
         {
+
+
+            if(String.IsNullOrEmpty(courseNameEntry.Text))
+            {
+                AlertNameBlank();
+                return;
+            }
+
+            if(courseStartDate.Date > courseEndDate.Date)
+            {
+                AlertDateOverlap();
+                return;
+            }
+
             Course course = new Course();
             course.Name = courseNameEntry.Text;
             course.CourseStatus = courseStatus.SelectedItem.ToString();
@@ -62,6 +76,21 @@ namespace TermScheduler
             Navigation.PopAsync();
         }
 
-    
+        private async void AlertDateOverlap()
+        {
+
+            await DisplayAlert("Alert", "Course Start Date cannot be greater than Course End Date", "OK");
+
+
+        }
+
+        private async void AlertNameBlank()
+        {
+
+            await DisplayAlert("Alert", "Course name cannot be blank", "OK");
+
+
+        }
+
     }
 }
