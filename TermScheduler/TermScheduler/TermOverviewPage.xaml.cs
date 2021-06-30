@@ -63,7 +63,8 @@ namespace TermScheduler
 
         private void editObjectiveAssessmentButton_Clicked(object sender, EventArgs e)
         {
-            EditObjectiveAssessmentPage page = new EditObjectiveAssessmentPage();
+            Course course = _courseList[courseCarouselView.Position];
+            EditObjectiveAssessmentPage page = new EditObjectiveAssessmentPage(course);
             page.BindingContext = _courseList[courseCarouselView.Position];
             Navigation.PushAsync(page);
            

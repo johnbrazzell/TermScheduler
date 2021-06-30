@@ -118,7 +118,7 @@ namespace TermScheduler
         }
 
 
-        public static async Task UpdateGeneralCourseInformation(Course course)
+        public static async Task UpdateCourse(Course course)
         {
             await Init();
             await db.UpdateAsync(course);
