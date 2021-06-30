@@ -21,18 +21,21 @@ namespace TermScheduler
 
         protected override void OnStart()
         {
-            PushNotifications.CheckNotifications();
+            PushNotifications.CheckTermNotifications();
+            PushNotifications.CheckCourseNotifications();
 
         }
 
         protected override void OnSleep()
         {
-            PushNotifications.CheckNotifications();
+            PushNotifications.CheckTermNotifications();
+            PushNotifications.CheckCourseNotifications();
         }
 
         protected override void OnResume()
         {
-            PushNotifications.CheckNotifications();
+            PushNotifications.CheckTermNotifications();
+            PushNotifications.CheckCourseNotifications();
         }
     }
 }

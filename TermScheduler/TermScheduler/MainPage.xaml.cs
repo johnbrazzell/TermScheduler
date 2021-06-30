@@ -37,8 +37,8 @@ namespace TermScheduler
         {
             List<Term> terms = (List<Term>)await DBService.GetTerms();
             List<Course> courses = (List<Course>)await DBService.GetClasses();
-            AlertTermCount(terms);
-            AlertClassCount(courses);
+            //AlertTermCount(terms);
+            //AlertClassCount(courses);
             for (int i = 0; i < terms.Count; i++)
             {
                 _termList.Add(terms[i]);

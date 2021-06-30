@@ -29,6 +29,11 @@ namespace TermScheduler
 
             Term newTerm = new Term();
 
+            if(String.IsNullOrEmpty(termNameEntry.Text))
+            {
+                AlertNameBlank();
+                return;
+            }
 
             //check to make sure dates are correct
             if(startTermDate.Date > endTermDate.Date)
@@ -37,6 +42,8 @@ namespace TermScheduler
                 AlertDateOverlap();
                 return;
             }
+
+
             newTerm.TermName = termNameEntry.Text;
             newTerm.TermStart = startTermDate.Date;
             newTerm.TermEnd = endTermDate.Date;
@@ -45,7 +52,7 @@ namespace TermScheduler
 
             _mainPage.AddTerm(newTerm);
             AddTermToDB(newTerm);
-            //Add call to DB to add term
+       
 
             Navigation.PopAsync();
         }
@@ -66,6 +73,14 @@ namespace TermScheduler
             await DisplayAlert("Alert", "Term Start Date cannot be greater than Term End Date", "OK");
 
             
+        }
+
+        private async void AlertNameBlank()
+        {
+
+            await DisplayAlert("Alert", "Term name cannot be blank", "OK");
+
+
         }
     }
 }
