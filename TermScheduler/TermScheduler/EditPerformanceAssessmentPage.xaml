@@ -30,9 +30,9 @@
 
                 <Label TextColor="Black"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" Text="Enable Notifications"></Label>
                 <CheckBox VerticalOptions="End" IsChecked="{Binding PerformanceAssessmentEndNotifications, Mode=TwoWay}" HorizontalOptions="Center" x:Name="endCheckBoxNotifications" Grid.Row="2" Grid.Column="1"></CheckBox>
-
-                <Button x:Name="saveButton" Clicked="saveButton_Clicked" Text="Cancel" Grid.Column="0" Grid.Row="3"></Button>
-                <Button x:Name="cancelButton" Clicked="cancelButton_Clicked" Text="Save" Grid.Column="1" Grid.Row="3"></Button>
+               
+                <Button x:Name="cancelButton" Clicked="cancelButton_Clicked_1" Text="Cancel" Grid.Column="0" Grid.Row="3"></Button>
+                <Button x:Name="saveButton" Clicked="saveButton_Clicked_1" Text="Save" Grid.Column="1" Grid.Row="3"></Button>
 
 
             </Grid>

@@ -2,7 +2,6 @@ D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\bin\Debug\ne
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\bin\Debug\netstandard2.0\TermScheduler.dll
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\bin\Debug\netstandard2.0\ref\TermScheduler.dll
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\bin\Debug\netstandard2.0\TermScheduler.pdb
-D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\TermScheduler.csprojAssemblyReference.cache
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\AddTermView.xaml.g.cs
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\App.xaml.g.cs
 D:\Visual Studio Projects\TermScheduler\TermScheduler\TermScheduler\obj\Debug\netstandard2.0\MainPage.xaml.g.cs

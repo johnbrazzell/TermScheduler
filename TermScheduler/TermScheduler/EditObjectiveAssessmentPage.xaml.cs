@@ -67,7 +67,7 @@ namespace TermScheduler
         private void cancelButton_Clicked(object sender, EventArgs e)
         {
             _isSaveButtonPressed = false;
-            RevertChanges();
+            //RevertChanges();
             Navigation.PopAsync();
         }
 
@@ -75,14 +75,14 @@ namespace TermScheduler
         {
             await DBService.UpdateCourse(_course);
         }
-
-        protected override async void OnDisappearing()
+        protected override void OnDisappearing()
         {
+            base.OnDisappearing();
             if (!_isSaveButtonPressed)
             {
-
                 RevertChanges();
             }
+
         }
     }
 }

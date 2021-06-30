@@ -28,7 +28,7 @@ namespace TermScheduler
           //  _courseList = await DBService.GetClasses();
 
             BindingContext = _courseList;
-            //courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "term.GetCourseList()");
+            //courseCarouselView.SetBinding(ItemsView.ItemsSourceProperty, "_courseList");
             courseCarouselView.ItemsSource = term.GetCourseList();
 
 
@@ -38,12 +38,6 @@ namespace TermScheduler
         
           
 
-        public void UpdatePerformanceAssessment(Course course)
-        {
-           // performanceAssessmentNameLabel.Text = course.PerformanceAssessment.Name;
-           // performanceAssessmentDueDateLabel.Text = course.PerformanceAssessment.StartDate;
-            
-        }
 
         private void emailNotesButton_Clicked(object sender, EventArgs e)
         {
@@ -54,10 +48,12 @@ namespace TermScheduler
         {
             List<string> email = new List<string>();
 
+            Course course = _courseList[courseCarouselView.Position];
+            
             string emailToAdd = await DisplayPromptAsync("Email Recipient", "Enter e-mail address", keyboard: Keyboard.Email);
 
             email.Add(emailToAdd);
-           // await ComposeEmail.SendEmail("Notes for " + courseNameLabel.Text, notesEditor.Text, email);
+            await ComposeEmail.SendEmail("Notes for " + course.Name, course.CourseNotes, email);
 
         }
 
@@ -65,17 +61,20 @@ namespace TermScheduler
         {
             Course course = _courseList[courseCarouselView.Position];
             EditObjectiveAssessmentPage page = new EditObjectiveAssessmentPage(course);
-            page.BindingContext = _courseList[courseCarouselView.Position];
+            page.BindingContext = course;
+            //page.BindingContext = _courseList[courseCarouselView.Position];
             Navigation.PushAsync(page);
            
         }
 
         private void editPerformanceAssessmentButton_Clicked(object sender, EventArgs e)
         {
-            EditPerformanceAssessmentPage page = new EditPerformanceAssessmentPage();
-            page.BindingContext = _courseList[courseCarouselView.Position];
+            Course course = _courseList[courseCarouselView.Position];
+            EditPerformanceAssessmentPage page = new EditPerformanceAssessmentPage(course);
+            page.BindingContext = course;
+            //page.BindingContext = _courseList[courseCarouselView.Position];
             Navigation.PushAsync(page);
-           // Navigation.PushAsync(new EditPerformanceAssessmentPage(_termView, _course));
+            
         }
 
         private void deleteClassButton_Clicked(object sender, EventArgs e)
@@ -88,16 +87,28 @@ namespace TermScheduler
 
         private void editClassButton_Clicked(object sender, EventArgs e)
         {
-            //create new page
-            //set binding to this course
-            EditCoursePage page = new EditCoursePage();
-            page.BindingContext = _courseList[courseCarouselView.Position];
+            
+            Course course = _courseList[courseCarouselView.Position];
+            EditCoursePage page = new EditCoursePage(course);
+            page.BindingContext = course;
+            //page.BindingContext = _courseList[courseCarouselView.Position];
             Navigation.PushAsync(page);
         }
 
         private async void RemoveCourse(Course course)
         {
             await DBService.DeleteCourse(course.Id);
+        }
+
+        private async void UpdateCourse(Course course)
+        {
+            await DBService.UpdateCourse(course);
+        }
+
+        private void notesEditor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Course course = _courseList[courseCarouselView.Position];
+            UpdateCourse(course);
         }
     }
 }

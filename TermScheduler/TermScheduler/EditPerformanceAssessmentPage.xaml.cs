@@ -13,8 +13,27 @@ namespace TermScheduler
     
     public partial class EditPerformanceAssessmentPage : ContentPage
     {
-        private Course _course = null;
+        private Course _course;
+        private bool _isSaveButtonPressed = false;
 
+        private string _perfName;
+        private DateTime _perfStart;
+        private DateTime _perfEnd;
+        private bool _perfStartNotifications;
+        private bool _perfEndNotifications;
+
+        public EditPerformanceAssessmentPage(Course course)
+        {
+            InitializeComponent();
+            Title = "Edit Performance Assessment";
+            _course = course;
+
+            _perfName = _course.PerformanceAssessmentName;
+            _perfStart = _course.PerformanceStart;
+            _perfEnd = _course.PerformanceEnd;
+            _perfStartNotifications = _course.PerformanceAssessmentStartNotifications;
+            _perfEndNotifications = _course.PerformanceAssessmentEndNotifications;
+        }
    
         public EditPerformanceAssessmentPage()
         {
@@ -23,37 +42,48 @@ namespace TermScheduler
             
             Title = "Edit Performance Assessment";
             
-           // _course = course;
-        
-          
           
       
         }
 
-   
-        private void saveButton_Clicked(object sender, EventArgs e)
+      
+
+        private void RevertChanges()
         {
+            assessmentName.Text = _perfName;
+            startDate.Date = _perfStart;
+            endDate.Date = _perfEnd;
+            startCheckBoxNotifications.IsChecked = _perfStartNotifications;
+            endCheckBoxNotifications.IsChecked = _perfEndNotifications;
+        }
 
-     
+        private async void UpdatePerformanceAssessment(Course course)
+        {
+            await DBService.UpdateCourse(course);
+        }
 
-            
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if (!_isSaveButtonPressed)
+            {
+                RevertChanges();
+            }
 
-            //_course.PerformanceAssessmentName = assessmentName.Text;
-            //_course.PerformanceAssessmentStartDate = startDate.Date.ToShortDateString();
-            //_course.PerformanceAssessmentEndDate = endDate.Date.ToShortDateString();
-            //_course.PerformanceAssessmentStartNotifications = startCheckBoxNotifications.IsChecked;
-            //_course.PerformanceAssessmentEndNotifications = endCheckBoxNotifications.IsChecked;
-            
+        }
 
-        
+        private void saveButton_Clicked_1(object sender, EventArgs e)
+        {
+            _isSaveButtonPressed = true;
+            UpdatePerformanceAssessment(_course);
             Navigation.PopAsync();
         }
 
-        private void cancelButton_Clicked(object sender, EventArgs e)
+        private void cancelButton_Clicked_1(object sender, EventArgs e)
         {
+            _isSaveButtonPressed = false;
+            //RevertChanges();
             Navigation.PopAsync();
         }
-
-
     }
 }

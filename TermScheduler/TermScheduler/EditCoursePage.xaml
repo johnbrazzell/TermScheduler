@@ -26,7 +26,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Entry Margin="20, 20, 20, 0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" x:Name="courseNameEntry" Text="{Binding CourseName}" VerticalOptions="End" Placeholder="Course Name"></Entry>
+                        <Entry Margin="20, 20, 20, 0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" x:Name="courseNameEntry" Text="{Binding Name}" VerticalOptions="End" Placeholder="Course Name"></Entry>
                         <Label  Margin="0, 20, 0, 0" Grid.Column="0" Grid.Row="1" HorizontalTextAlignment="Center" Text="Course Start"></Label>
                         <Label Margin="0, 20, 0, 0" Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="Center" Text="Course End"></Label>
 
@@ -41,11 +41,11 @@
                         <Entry Margin="20, 0, 20, 0" Grid.Row="5" Grid.ColumnSpan="3" Keyboard="Email" VerticalOptions="End" x:Name="instructorEmailAddressEntry" Placeholder="Instructor Email Address" Text="{Binding InstructorEmail}"></Entry>
 
                         <Label  Margin="5, 10, 0, 0" HorizontalOptions="Start" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Text="Start Course Alerts"></Label>
-                        <CheckBox Grid.Row="6" Grid.Column="0" Margin="40, 20, 0, 0" IsChecked="{Binding CourseStartNotifications, Mode=TwoWay}"></CheckBox>
+                        <CheckBox x:Name="startNotifications"  Grid.Row="6" Grid.Column="0" Margin="40, 20, 0, 0" IsChecked="{Binding CourseStartNotifications, Mode=TwoWay}"></CheckBox>
 
 
                         <Label Margin="0,10, 0, 5" HorizontalOptions="Start" Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="6" Text="End Course Alerts"></Label>
-                        <CheckBox Grid.Row="6" Grid.Column="2" Margin="0, 20, 40, 0" HorizontalOptions="End" IsChecked="{Binding CourseEndNotifications, Mode=TwoWay}"></CheckBox>
+                        <CheckBox x:Name="endNotifications" Grid.Row="6" Grid.Column="2" Margin="0, 20, 40, 0" HorizontalOptions="End" IsChecked="{Binding CourseEndNotifications, Mode=TwoWay}"></CheckBox>
 
 
                     </Grid>

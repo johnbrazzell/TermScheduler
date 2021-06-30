@@ -13,13 +13,22 @@
 
                             <Frame BackgroundColor="#003057" HeightRequest="40">
                                 <FlexLayout >
-                                    <Label x:Name="courseNameLabel" FlexLayout.Grow="1"  Margin="0,0, 20, 0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="{Binding Name}"></Label>
+                                    <Label FlexLayout.Grow="1"  Margin="0,0, 20, 0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="Course Info"></Label>
                                     <Button FontSize="Small" CornerRadius="20" BorderColor="Black" BorderWidth="1" FlexLayout.AlignSelf="End" HorizontalOptions="End" x:Name="editClassButton" Text="Edit" Clicked="editClassButton_Clicked"></Button>
                                     <Button FontSize="Small" Margin="10, 0, 0, 0" CornerRadius="20" BorderColor="Black" BorderWidth="1" x:Name="deleteClassButton" Text="Delete" Clicked="deleteClassButton_Clicked"></Button>
                                 </FlexLayout>
                             </Frame>
 
-
+                        <FlexLayout Margin="10">
+                            <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="courseNameLabel">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Course Name: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding Name}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </FlexLayout>
 
                             <FlexLayout Margin="10">
                                 <Label TextColor="Black" FontSize="Body"  FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" x:Name="courseStartLabel">
@@ -105,7 +114,7 @@
 
 
 
-                            <Label HorizontalOptions= "Start" TextColor="Black" FontSize="Body" x:Name="objectiveAsssessmentNameLabel">
+                        <Label Margin="10" HorizontalOptions= "Start" TextColor="Black" FontSize="Body" x:Name="objectiveAsssessmentNameLabel">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Name: " FontAttributes="Bold"/>
@@ -114,7 +123,7 @@
                                 </Label.FormattedText>
                             </Label>
 
-                            <FlexLayout>
+                        <FlexLayout Margin="10">
 
                                 <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentStartDateLabel">
                                     <Label.FormattedText>
@@ -136,7 +145,7 @@
 
                             </FlexLayout>
 
-                            <FlexLayout>
+                        <FlexLayout Margin="10">
 
                                 <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body"  x:Name="objectiveAssessmentStartNotificationsLabel">
                                     <Label.FormattedText>
@@ -172,7 +181,7 @@
                                 </FlexLayout>
                             </Frame>
 
-                            <Label HorizontalOptions= "Start" TextColor="Black" FontSize="Body" x:Name="performanceAsssessmentNameLabel">
+                        <Label Margin="10" HorizontalOptions= "Start" TextColor="Black" FontSize="Body" x:Name="performanceAsssessmentNameLabel">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Name: " FontAttributes="Bold"/>
@@ -181,10 +190,10 @@
                                 </Label.FormattedText>
                             </Label>
 
-                          
 
 
-                            <FlexLayout>
+
+                        <FlexLayout Margin="10">
                                 <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body" x:Name="performanceAsssessmentStartDateLabel">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -205,7 +214,7 @@
                                 
                             </FlexLayout>
 
-                            <FlexLayout>
+                        <FlexLayout Margin="10">
                                 <Label TextColor="Black" FlexLayout.Grow="1" FlexLayout.AlignSelf="Start" FontSize="Body" x:Name="performanceAsssessmentStartNotificationsLabel">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -240,7 +249,7 @@
 
 
 
-                            <Editor x:Name="notesEditor" AutoSize="TextChanges"></Editor>
+                            <Editor x:Name="notesEditor" TextChanged="notesEditor_TextChanged" Text="{Binding CourseNotes}" AutoSize="TextChanges"></Editor>
 
 
 
